@@ -167,29 +167,91 @@ function initStage(images) {
     );
 }
 
-$.getJSON("crossroads.json", function(json) {
-    prepareIcons(json);
-    prepareModal(json);
+$.getJSON("Data/crossroads.json", function(json) {
+    prepareSources(json, 1);
 })
 
-var sources = {
-    beach: 'beach.png',
-    snake: 'snake.png',
-    snake_glow: 'snake-glow.png',
-    snake_black: 'snake-black.png',
-    lion: 'lion.png',
-    lion_glow: 'lion-glow.png',
-    lion_black: 'lion-black.png',
-    monkey: 'monkey.png',
-    monkey_glow: 'monkey-glow.png',
-    monkey_black: 'monkey-black.png',
-    giraffe: 'giraffe.png',
-    giraffe_glow: 'giraffe-glow.png',
-    giraffe_black: 'giraffe-black.png'
-};
-loadImages(sources, initStage);
+
+function prepareSources(json, crossId) {
+
+    var crossroad;
+
+    //najdem spravnu krizovatku
+    for (var i = 0; i < json.CrossRoads.length; i++) {
+        if (json.CrossRoads[i].Id == crossId) {
+            crossroad = json.CrossRoads[i];
+            break;
+        }
+    }
+
+    //nenasiel som
+    if (crossroad == null) {
+        alert("krizovatka sa nenasla");
+        return;
+    }
+
+    //potrebujem nacitat auta
+    //zistim ake auta su potrebne
+    var carsId = [];
+    for (var i = 0; i < crossroad.Cars.length; i++) {
+        carsId.push(crossroad.Cars[i].ImageId);
+    }
+
+    //najdem spravne auta
+    var cars = [];
+    for (var i = 0; i < json.Cars.length; i++) {
+        if (carsId.includes(json.Cars[i].Id)) {
+            cars.push(json.Cars[i]);
+        }
+    }
+
+    createCrossRoad(crossroad, cars);
+
+}
 
 
-function prepareIcons(json) {
+function createCrossRoad(crossroad, cars) {
+    var stage = new Konva.Stage({
+        container: 'container',
+        width: 578,
+        height: 530
+    });
+
+    var background = new Konva.Layer();
+    var carLayer = new Konva.Layer();
+
+    var carConfigs = crossroad.Cars;
+
+    for (var i = 0; i < carConfigs.length; i++) {
+        (function() {
+
+            var carImage = new Konva.Image({
+                image: cars[i].Path,
+                x: carConfigs[i].Path[0].x,
+                y: carConfigs[i].Path[0].y,
+                draggable: true
+            });
+
+
+
+            var animation = new Konva.Animation(function(frame) {
+                carImage.x(
+                    100 * Math.sin((frame.time * 2 * Math.PI) / 2000) + 250
+                );
+            }, carLayer);
+
+            carImage.on('click', function() {
+                this.moveToTop();
+                animation.start();
+            });
+
+            carLayer.add(carImage);
+        })();
+    }
+
+    stage.add(background);
+    stage.add(carLayer);
+
+    drawBackground(background, crossroad.Background, "sdad");
 
 }

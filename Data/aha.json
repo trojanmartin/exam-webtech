@@ -1,0 +1,7 @@
+{
+    "Car": {
+        "Color": "Silver",
+        "Id": 1,
+        "Path": "assets/cars/tmp_car.png"
+    }
+}
