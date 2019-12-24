@@ -167,9 +167,13 @@ function initStage(images) {
     );
 }
 
-$.getJSON("Data/crossroads.json", function(json) {
-    prepareSources(json, 1);
-})
+function load() {
+    $.getJSON("Data/crossroads.json", function(json) {
+        prepareSources(json, 1);
+    })
+
+}
+
 
 
 function prepareSources(json, crossId) {
@@ -183,34 +187,36 @@ function prepareSources(json, crossId) {
             break;
         }
     }
-
+    var cars = {};
     //nenasiel som
     if (crossroad == null) {
         alert("krizovatka sa nenasla");
         return;
     }
-
-    //potrebujem nacitat auta
-    //zistim ake auta su potrebne
+    //TODO dat to dokopy, pointa je ze to musi byt image aby to canvas vedel vykreslit
+    cars["back"] = new Image();
+    cars["back"].onload = createCrossRoad(cars);
+    cars["back"].src = crossroad.Background
+        //potrebujem nacitat auta
+        //zistim ake auta su potrebne
     var carsId = [];
     for (var i = 0; i < crossroad.Cars.length; i++) {
         carsId.push(crossroad.Cars[i].ImageId);
     }
 
     //najdem spravne auta
-    var cars = [];
+    //var cars = {};
     for (var i = 0; i < json.Cars.length; i++) {
         if (carsId.includes(json.Cars[i].Id)) {
-            cars.push(json.Cars[i]);
+            cars[json.Cars[i].Id] = new Image();
+            cars[json.Cars[i].Id].onload = createCrossRoad(cars);
+            cars[json.Cars[i].Id].src = json.Cars[i].Path;
         }
     }
-
-    createCrossRoad(crossroad, cars);
-
 }
 
-
-function createCrossRoad(crossroad, cars) {
+//Cele zle, treba uplne prerobit, musi sa tam nejako posielat zoznam aut pre krizovatku, pripadne zvolit uplne iny koncept
+function createCrossRoad(cars) {
     var stage = new Konva.Stage({
         container: 'container',
         width: 578,
@@ -226,7 +232,7 @@ function createCrossRoad(crossroad, cars) {
         (function() {
 
             var carImage = new Konva.Image({
-                image: cars[i].Path,
+                image: cars[i],
                 x: carConfigs[i].Path[0].x,
                 y: carConfigs[i].Path[0].y,
                 draggable: true
@@ -252,6 +258,6 @@ function createCrossRoad(crossroad, cars) {
     stage.add(background);
     stage.add(carLayer);
 
-    drawBackground(background, crossroad.Background, "sdad");
+    drawBackground(background, crossroad["back"], "sdad");
 
 }
