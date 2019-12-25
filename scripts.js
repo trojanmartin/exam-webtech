@@ -68,8 +68,8 @@ function prepareSources(json, crossId) {
 function createCrossRoad(images, backgroundImage) {
     var stage = new Konva.Stage({
         container: 'road',
-        width: 1500,
-        height: 600
+        width: (width / 10) * 8,
+        height: (height / 10) * 9
     });
 
     var background = new Konva.Layer();
