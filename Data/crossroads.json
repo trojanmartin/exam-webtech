@@ -35,7 +35,7 @@
         "Id": 1,
         "Name": "Krizovatka c.1",
         "Background": "assets/crossroads/1.png",
-        "RightOrder": [1, 3, 2],
+        "RightOrder": [6, 3, 2],
         "Cars": [{
                 "ImageId": 6,
                 "StartRotate": 0,

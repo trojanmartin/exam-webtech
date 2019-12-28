@@ -1,25 +1,19 @@
 var windowWidth = window.innerWidth;
 var windowHeight = window.innerHeight;
 
-function drawBackground(background, beachImg, text) {
-    var context = background.getContext();
-    context.drawImage(beachImg, 0, 0);
-    context.setAttr('font', '20pt Calibri');
-    context.setAttr('textAlign', 'center');
-    context.setAttr('fillStyle', 'white');
-    context.fillText(text, background.getStage().width() / 2, 40);
-}
+var lastCrossroad;
 
-function load() {
+function load(id) {
     $.getJSON("Data/crossroads.json", function(json) {
-        prepareSources(json, 1);
+        lastCrossroad = id;
+        prepareSources(json, id);
     })
 
 }
 
 function prepareSources(json, crossId) {
 
-    var crossroad;
+    var selectedCrossroad;
     var loadedImages = 0;
     var numImages = 0;
 
@@ -27,35 +21,35 @@ function prepareSources(json, crossId) {
     //najdem spravnu krizovatku
     for (var i = 0; i < json.CrossRoads.length; i++) {
         if (json.CrossRoads[i].Id == crossId) {
-            crossroad = json.CrossRoads[i];
+            selectedCrossroad = json.CrossRoads[i];
             break;
         }
     }
     //vytvorim novy objekt kde budu obrazky a configy
-    var backgroundImage = {};
+    var crossroad = {};
     var cars = {};
     //nenasiel som
-    if (crossroad == null) {
+    if (selectedCrossroad == null) {
         alert("krizovatka sa nenasla");
         return;
     }
     //potrebujem nacitat auta
     //zistim ake auta su potrebne
     //pocet vsetkych aut + 1 krizovatka
-    numImages = crossroad.Cars.length + 1;
+    numImages = selectedCrossroad.Cars.length + 1;
 
-    for (var i = 0; i < crossroad.Cars.length; i++) {
-        var car = GetCarFromId(json, crossroad.Cars[i].ImageId);
+    for (var i = 0; i < selectedCrossroad.Cars.length; i++) {
+        var car = GetCarFromId(json, selectedCrossroad.Cars[i].ImageId);
 
         cars[car.Id] = {};
         //car Path
-        cars[car.Id].Config = crossroad.Cars[i];
+        cars[car.Id].Config = selectedCrossroad.Cars[i];
 
         //createImage
         cars[car.Id].image = new Image();
         cars[car.Id].image.onload = function() {
             if (++loadedImages >= numImages) {
-                createCrossRoad(cars, backgroundImage);
+                createCrossRoad(cars, crossroad);
             }
         }
         cars[car.Id].image.Id = car.Id;
@@ -63,20 +57,22 @@ function prepareSources(json, crossId) {
     }
 
 
-    backgroundImage.image = new Image();
-    backgroundImage.image.onload = function() {
+    crossroad.RightOrder = selectedCrossroad.RightOrder;
+
+    crossroad.image = new Image();
+    crossroad.image.onload = function() {
         if (++loadedImages >= numImages) {
-            createCrossRoad(cars, backgroundImage);
+            createCrossRoad(cars, crossroad);
         }
     }
-    backgroundImage.image.src = crossroad.Background;
+    crossroad.image.src = selectedCrossroad.Background;
 }
 
-function createCrossRoad(cars, backgroundImage) {
+function createCrossRoad(cars, crossroad) {
     var stage = new Konva.Stage({
         container: 'road',
         width: (windowWidth / 10) * 8,
-        height: (windowHeight / 10) * 9
+        height: windowHeight
     });
 
     var background = new Konva.Layer();
@@ -107,7 +103,6 @@ function createCrossRoad(cars, backgroundImage) {
                     x: 0,
                     y: 0,
                     stroke: 'cyan'
-
                 });
 
                 // Load the path points up using M = moveto, L = lineto.
@@ -129,7 +124,7 @@ function createCrossRoad(cars, backgroundImage) {
                 var angleSpeed = cars[key].Config.Rotation;
                 current = 0;
 
-                animation = new Konva.Animation(function(frame) {
+                animations[key] = new Konva.Animation(function(frame) {
 
                     pos = pos + 1;
                     pt = path.getPointAtLength(pos * step);
@@ -150,17 +145,22 @@ function createCrossRoad(cars, backgroundImage) {
 
                 }, carLayer);
 
-                animations[key] = animation;
+                var rightOrderQueue = crossroad.RightOrder;
 
                 //nastavim eventy kedy sa ma spustit animacia
                 carImage.on('click', function() {
-                    this.moveToTop();
-                    animations[this.attrs.id].start();
+                    if (CheckRightOrder(this.attrs.id, rightOrderQueue)) {
+                        this.moveToTop();
+                        animations[this.attrs.id].start();
+                    } else {
+                        alert("zle poradie");
+                        stage.clear();
+                        load(lastCrossroad);
+                    }
                 });
 
                 carImage.on('tap', function() {
-                    this.moveToTop();
-                    animations[this.attrs.id].start();
+                    CheckRightOrder(this.attrs.id, rightOrderQueue);
                 });
 
                 carLayer.add(carImage);
@@ -171,7 +171,7 @@ function createCrossRoad(cars, backgroundImage) {
     stage.add(background);
     stage.add(carLayer);
 
-    drawBackground(background, backgroundImage.image, "sdad");
+    drawBackground(background, crossroad.image, "sdad");
 }
 
 
@@ -184,4 +184,23 @@ function GetCarFromId(json, id) {
         }
     }
 }
-//najdem spravne auta
+
+
+function CheckRightOrder(id, orderQueue) {
+
+    var validId = orderQueue.shift();
+
+    if (validId == id)
+        return true;
+
+    return false;
+}
+
+function drawBackground(background, beachImg, text) {
+    var context = background.getContext();
+    context.drawImage(beachImg, 0, 0);
+    context.setAttr('font', '20pt Calibri');
+    context.setAttr('textAlign', 'center');
+    context.setAttr('fillStyle', 'white');
+    context.fillText(text, background.getStage().width() / 2, 40);
+}
