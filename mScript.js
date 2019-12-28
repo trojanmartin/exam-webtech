@@ -1,4 +1,5 @@
-var dict = {};
+var dict1 = {};
+var dict2 = {};
 
 function set(json) {
     var today = new Date();
@@ -11,9 +12,13 @@ function set(json) {
 
 
     json.forEach(function(x) {
-        dict[x.den] = x.SK
+        dict1[x.den] = x.SK
     })
-    var name = dict[q];
+
+    json.forEach(function(x) {
+        dict2[x.SK] = x.den
+    })
+    var name = dict1[q];
 
 
     document.getElementById("actual").innerText = today + "  " + name;
@@ -29,17 +34,49 @@ function load() {
 
 }
 
-function setName() {
-    var d = document.getElementById("chDate").value;
-    var date = new Date(d);
-    var dd = String(date.getDate()).padStart(2, '0');
-    var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var q = mm + dd;
-    console.log(q);
-    document.getElementById("fName").innerHTML = dict[q];
+function normalizeString(string) {
+    var input = string.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    input = input.toLowerCase();
+    return input;
 }
 
-function setDate() {
-    var name = document.getElementById("chName").value;
-    console.log(name);
+
+function work() {
+    var input = document.getElementById("input").value;
+    try {
+        if (hasNumber(input)) {
+            var date = input.split(".");
+            if (date.length != 2) {
+                throw RangeError;
+            }
+            if (date[0].length == 1) {
+                date[0] = "0" + date[0];
+            }
+            if (date[1].length == 1) {
+                date[1] = "0" + date[1];
+            }
+            var q = date[1] + date[0];
+            if (dict1[q] == undefined) {
+                throw RangeError;
+            }
+            document.getElementById("output").innerHTML = dict1[q];
+        } else {
+            input = normalizeString(input);
+            Object.keys(dict2).forEach(function(key) {
+                var name = normalizeString(key);
+                if (name.includes(input)) {
+                    document.getElementById("output").innerHTML = dict2[key].substring(2, 4) + "." + dict2[key].substring(0, 2);
+                }
+
+            });
+        }
+    } catch (error) {
+        alert("chybne zadany vstup");
+    }
+
+
+}
+
+function hasNumber(myString) {
+    return /\d/.test(myString);
 }
