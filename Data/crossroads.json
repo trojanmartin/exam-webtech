@@ -13,86 +13,88 @@
             "Color": "Grey",
             "Id": 3,
             "Path": "assets/cars/grey.png"
+        },
+        {
+            "Color": "Red",
+            "Id": 4,
+            "Path": "assets/cars/red.png"
+        },
+        {
+            "Color": "White",
+            "Id": 5,
+            "Path": "assets/cars/white.png"
+        },
+        {
+            "Color": "Yellow",
+            "Id": 6,
+            "Path": "assets/cars/yellow.png"
         }
     ],
 
     "CrossRoads": [{
         "Id": 1,
         "Name": "Krizovatka c.1",
-        "Background": "assets/crossroads/2.png",
+        "Background": "assets/crossroads/1.png",
         "RightOrder": [1, 3, 2],
         "Cars": [{
-                "Id": 1,
-                "ImageId": 1,
+                "ImageId": 6,
+                "StartRotate": 0,
+                "Rotation": 5,
                 "Path": [{
-                        "x": 35,
-                        "y": 52
+                        "x": 350,
+                        "y": 250
                     },
                     {
-                        "x": 35,
-                        "y": 52
+                        "x": 530,
+                        "y": 250
                     },
                     {
-                        "x": 35,
-                        "y": 52
+                        "x": 530,
+                        "y": 250
                     },
                     {
-                        "x": 35,
-                        "y": 52
+                        "x": 530,
+                        "y": 450
                     },
                     {
-                        "x": 35,
-                        "y": 52
+                        "x": 530,
+                        "y": 750
                     }
                 ]
             },
             {
-                "Id": 2,
-                "ImageId": 3,
-                "Path": [{
-                        "x": 35,
-                        "y": 52
-                    },
-                    {
-                        "x": 35,
-                        "y": 52
-                    },
-                    {
-                        "x": 35,
-                        "y": 52
-                    },
-                    {
-                        "x": 35,
-                        "y": 52
-                    },
-                    {
-                        "x": 35,
-                        "y": 52
-                    }
-                ]
-            },
-            {
-                "Id": 3,
                 "ImageId": 2,
+                "StartRotate": 180,
+                "Rotation": -5,
                 "Path": [{
-                        "x": 35,
-                        "y": 52
+                        "x": 800,
+                        "y": 120
                     },
                     {
-                        "x": 35,
-                        "y": 52
+                        "x": 500,
+                        "y": 120
                     },
                     {
-                        "x": 35,
-                        "y": 52
+                        "x": 500,
+                        "y": 750
+                    }
+                ]
+            },
+            {
+                "ImageId": 3,
+                "StartRotate": -90,
+                "Rotation": -5,
+                "Path": [{
+                        "x": 650,
+                        "y": 400
                     },
                     {
-                        "x": 35,
-                        "y": 52
+                        "x": 650,
+                        "y": 120
                     },
                     {
-                        "x": 35,
-                        "y": 52
+                        "x": 0,
+                        "y": 120
                     }
                 ]
             }
