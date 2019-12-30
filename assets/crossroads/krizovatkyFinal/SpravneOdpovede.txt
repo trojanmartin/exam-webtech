@@ -7,4 +7,6 @@ Krizovatka6ex - 1. zelene 2. modre 3. zlte (smerovky --> zlte doprava, modre dop
 Krizovatka7ex - zipsove pravidlo :D
 Krizovatka8ex - 1. elektricka 2. zelene 3. modre 4. zlte 5. cervene (nie som si isty :D)
 Krizovatka9ex - 1. elektricka/sive auto, 2.zelene, 3. cervene (smerovky --> sive dolava, zelene dohora, cervene dolava)
-Krizovatka10ex - 1. modre, 2.zelene
+Krizovatka10ex - 1.zelene 2. cervene/zlte (smerovky --> zelene dolava, cervene doprava, zlte rovno)
+
+Krizovatka11ex - 1.zelene, 2. cervene, 3 modre (smerovky --> cervena doprava, zvysne rovno)
