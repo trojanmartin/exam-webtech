@@ -117,7 +117,6 @@ function createCrossRoad(cars, crossroad, container) {
                     image: cars[key].image,
                     width: 120,
                     height: 70,
-                    rotation: cars[key].Config.StartRotate,
                     id: key,
                     draggable: false,
                 });
@@ -127,12 +126,13 @@ function createCrossRoad(cars, crossroad, container) {
                     y: carImage.height() / 2
                 });
 
+
                 var circle = new Konva.Circle({
                     radius: 5,
                     fill: 'orange',
                     stroke: 'orange',
-                    x: 0,
-                    y: 0,
+                    x: (carImage.width() / 2) - 10,
+                    y: (carImage.height() / 2) * cars[key].Config.Blinker + cars[key].Config.BlinkerPosition,
                     strokeWidth: 5
                 });
 
@@ -140,6 +140,7 @@ function createCrossRoad(cars, crossroad, container) {
                 var carGroup = new Konva.Group({
                     x: cars[key].Config.Path[0].x,
                     y: cars[key].Config.Path[0].y,
+                    rotation: cars[key].Config.StartRotate,
                     id: key,
                     draggable: false,
                 })
@@ -172,12 +173,15 @@ function createCrossRoad(cars, crossroad, container) {
                 current = 0;
 
                 var next = true;
-                var frequency = 3;
-                var curr = 0;
+                var time = 0;
                 var blinkerAnimation = new Konva.Animation(function(frame) {
+                    time = time + frame.timeDiff;
+                    if (time > 500) {
+                        circle.opacity(next ? 1 : 0);
+                        next = !next;
+                        time = 0;
+                    }
 
-                    circle.opacity(next ? 1 : 0);
-                    next = !next;
 
 
 
