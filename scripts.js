@@ -4,28 +4,22 @@ var stageHeight = 1000;
 const VIRTUAL_WIDTH = 1200;
 
 var lastCrossroad;
-const crossListClass = "list-group-item list-group-item-action bg-light";
+
+const mainCanvas = 'road';
+
+const crossListClass = "list-group-item list-group-item-action ";
 const badOrderText = "Nesprávne poradie. Skúste to ešte raz.";
 const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne";
 
-function load(id) {
-    $.getJSON("Data/crossroads.json", function(json) {
-        lastCrossroad = id;
-        prepareSources(json, id);
-    })
-
-}
 
 
 function prepareOnLoad() {
-
-
-
     $.getJSON("Data/crossroads.json", function(json) {
         for (var i = 0; i < json.CrossRoads.length; i++) {
             var cross = document.createElement("a");
             cross.className = crossListClass;
-            cross.setAttribute("onclick", `load(${json.CrossRoads[i].Id})`);
+            cross.id = `${json.CrossRoads[i].Id}cross`;
+            cross.setAttribute("onclick", `load(${json.CrossRoads[i].Id}, ${mainCanvas})`);
             cross.innerText = json.CrossRoads[i].Name;
             $("#cros-list").append(cross);
         }
@@ -33,7 +27,21 @@ function prepareOnLoad() {
     })
 }
 
-function prepareSources(json, crossId) {
+function load(id, container) {
+    $.getJSON("Data/crossroads.json", function(json) {
+        lastCrossroad = id;
+        prepareSources(json, id, container);
+        setActive(id);
+    })
+
+}
+
+function setActive(id) {
+    $("#cros-list").children('a').removeClass('active');
+    $(`#${id}cross`).addClass('active');
+}
+
+function prepareSources(json, crossId, container) {
 
     var selectedCrossroad;
     var loadedImages = 0;
@@ -90,7 +98,7 @@ function prepareSources(json, crossId) {
     crossroad.image.src = selectedCrossroad.Background;
 }
 
-function createCrossRoad(cars, crossroad) {
+function createCrossRoad(cars, crossroad, container) {
     var stage = new Konva.Stage({
         container: 'road',
         width: stageWidth,
@@ -187,6 +195,7 @@ function createCrossRoad(cars, crossroad) {
         image: crossroad.image,
         draggable: false,
     });
+
     background.add(road);
 
     stage.add(background);
@@ -194,14 +203,9 @@ function createCrossRoad(cars, crossroad) {
 
     fitStageIntoParentContainer(stage);
 
-
     window.addEventListener('resize', function() {
         fitStageIntoParentContainer(stage);
-
-        // drawBackground(background, crossroad.image, "sdad");
     });
-
-    //  drawBackground(background, crossroad.image, "sdad");
 }
 
 
@@ -221,7 +225,7 @@ function HandleMove(sender, rightOrderQueue, animations, stage) {
         animations[sender.attrs.id].start();
 
         if (rightOrderQueue.length == 0) {
-            showModal(succesMessage, "Pokračovať na ďalšiu križovatku", `load(${lastCrossroad + 1 })`);
+            showModal(succesMessage, "Pokračovať na ďalšiu križovatku", `load(${lastCrossroad + 1 }, ${mainCanvas})`);
         }
     } else {
         stage.destroy();
@@ -254,8 +258,6 @@ function fitStageIntoParentContainer(stage) {
         scaleX: scale,
         scaleY: scale
     });
-
-
     stage.draw();
 }
 
