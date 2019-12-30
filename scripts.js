@@ -1,17 +1,47 @@
-var windowWidth = window.innerWidth;
-var windowHeight = window.innerHeight;
+var stageWidth = 1000;
+var stageHeight = 1000;
+
+const VIRTUAL_WIDTH = 1200;
 
 var lastCrossroad;
 
-function load(id) {
+const mainCanvas = 'road';
+
+const crossListClass = "list-group-item list-group-item-action ";
+const badOrderText = "Nesprávne poradie. Skúste to ešte raz.";
+const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne";
+
+
+
+function prepareOnLoad() {
+    $.getJSON("Data/crossroads.json", function(json) {
+        for (var i = 0; i < json.CrossRoads.length; i++) {
+            var cross = document.createElement("a");
+            cross.className = crossListClass;
+            cross.id = `${json.CrossRoads[i].Id}cross`;
+            cross.setAttribute("onclick", `load(${json.CrossRoads[i].Id}, ${mainCanvas})`);
+            cross.innerText = json.CrossRoads[i].Name;
+            $("#cros-list").append(cross);
+        }
+
+    })
+}
+
+function load(id, container) {
     $.getJSON("Data/crossroads.json", function(json) {
         lastCrossroad = id;
-        prepareSources(json, id);
+        prepareSources(json, id, container);
+        setActive(id);
     })
 
 }
 
-function prepareSources(json, crossId) {
+function setActive(id) {
+    $("#cros-list").children('a').removeClass('active');
+    $(`#${id}cross`).addClass('active');
+}
+
+function prepareSources(json, crossId, container) {
 
     var selectedCrossroad;
     var loadedImages = 0;
@@ -68,11 +98,11 @@ function prepareSources(json, crossId) {
     crossroad.image.src = selectedCrossroad.Background;
 }
 
-function createCrossRoad(cars, crossroad) {
+function createCrossRoad(cars, crossroad, container) {
     var stage = new Konva.Stage({
         container: 'road',
-        width: (windowWidth / 10) * 8,
-        height: windowHeight
+        width: stageWidth,
+        height: stageHeight
     });
 
     var background = new Konva.Layer();
@@ -85,8 +115,8 @@ function createCrossRoad(cars, crossroad) {
 
                 var carImage = new Konva.Image({
                     image: cars[key].image,
-                    width: 170,
-                    height: 100,
+                    width: 120,
+                    height: 70,
                     x: cars[key].Config.Path[0].x,
                     y: cars[key].Config.Path[0].y,
                     rotation: cars[key].Config.StartRotate,
@@ -149,18 +179,11 @@ function createCrossRoad(cars, crossroad) {
 
                 //nastavim eventy kedy sa ma spustit animacia
                 carImage.on('click', function() {
-                    if (CheckRightOrder(this.attrs.id, rightOrderQueue)) {
-                        this.moveToTop();
-                        animations[this.attrs.id].start();
-                    } else {
-                        alert("zle poradie");
-                        stage.clear();
-                        load(lastCrossroad);
-                    }
+                    HandleMove(this, rightOrderQueue, animations, stage);
                 });
 
                 carImage.on('tap', function() {
-                    CheckRightOrder(this.attrs.id, rightOrderQueue);
+                    HandleMove(this, rightOrderQueue, animations, stage);
                 });
 
                 carLayer.add(carImage);
@@ -168,10 +191,21 @@ function createCrossRoad(cars, crossroad) {
         }
     }
 
+    var road = new Konva.Image({
+        image: crossroad.image,
+        draggable: false,
+    });
+
+    background.add(road);
+
     stage.add(background);
     stage.add(carLayer);
 
-    drawBackground(background, crossroad.image, "sdad");
+    fitStageIntoParentContainer(stage);
+
+    window.addEventListener('resize', function() {
+        fitStageIntoParentContainer(stage);
+    });
 }
 
 
@@ -185,6 +219,22 @@ function GetCarFromId(json, id) {
     }
 }
 
+function HandleMove(sender, rightOrderQueue, animations, stage) {
+    if (CheckRightOrder(sender.attrs.id, rightOrderQueue)) {
+        sender.moveToTop();
+        animations[sender.attrs.id].start();
+
+        if (rightOrderQueue.length == 0) {
+            showModal(succesMessage, "Pokračovať na ďalšiu križovatku", `load(${lastCrossroad + 1 }, ${mainCanvas})`);
+        }
+    } else {
+        stage.destroy();
+        showModal(badOrderText, "Ok");
+        load(lastCrossroad);
+    }
+}
+
+
 
 function CheckRightOrder(id, orderQueue) {
 
@@ -196,11 +246,32 @@ function CheckRightOrder(id, orderQueue) {
     return false;
 }
 
-function drawBackground(background, beachImg, text) {
-    var context = background.getContext();
-    context.drawImage(beachImg, 0, 0);
-    context.setAttr('font', '20pt Calibri');
-    context.setAttr('textAlign', 'center');
-    context.setAttr('fillStyle', 'white');
-    context.fillText(text, background.getStage().width() / 2, 40);
+function fitStageIntoParentContainer(stage) {
+    const availableWidth = window.innerWidth;
+    const availableHeight = window.innerHeight;
+
+    const scale = availableWidth / VIRTUAL_WIDTH;
+
+    stage.setAttrs({
+        width: availableWidth,
+        height: availableHeight,
+        scaleX: scale,
+        scaleY: scale
+    });
+    stage.draw();
+}
+
+function showModal(text, primaryButtonText, onPrimaryClick) {
+
+    var content = document.createElement('p');
+    content.innerText = text;
+
+    $('#infoModalBody').empty();
+    $('#infoModalBody').append(content);
+
+    document.querySelector('#infoModalPrimaryBtn').innerText = primaryButtonText;
+
+    document.querySelector('#infoModalPrimaryBtn').setAttribute("onclick", onPrimaryClick);
+
+    $('#infoModal').modal('show');
 }

@@ -11,7 +11,7 @@
     <title>Webové kokotiny</title>
 </head>
 
-<body>
+<body onload="prepareOnLoad()">
     <!-- https://getbootstrap.com/docs/4.4/components/navbar/#toggler -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,21 +34,43 @@
         </div>
     </nav>
 
-    <div class="d-flex" id="wrapper">
+
+    <div class="d-flex">
         <!-- Sidebar -->
         <div class="bg-light border-right" id="sidebar-wrapper">
-            <div class="list-group list-group-flush">
-                <a onclick="load(1)" class="list-group-item list-group-item-action bg-light">Križovatka č.1</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+            <div class="list-group list-group-flush" id="cros-list">
             </div>
         </div>
 
-        <div id="page-content-wrapper">
-            <div id="road"></div>
+
+        <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="infoModalTitle">Informácia</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body" id="infoModalBody">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-secondary">Zatvoriť</button>
+                        <button type="button" data-dismiss="modal" id="infoModalPrimaryBtn" class="btn btn-primary">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div id="canvas-container">
+                    <div id="road"></div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
