@@ -9,7 +9,7 @@ const mainCanvas = 'road';
 
 const crossListClass = "list-group-item list-group-item-action ";
 const badOrderText = "Nesprávne poradie. Skúste to ešte raz.";
-const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne";
+const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne.";
 
 
 
@@ -117,8 +117,6 @@ function createCrossRoad(cars, crossroad, container) {
                     image: cars[key].image,
                     width: 120,
                     height: 70,
-                    x: cars[key].Config.Path[0].x,
-                    y: cars[key].Config.Path[0].y,
                     rotation: cars[key].Config.StartRotate,
                     id: key,
                     draggable: false,
@@ -128,6 +126,25 @@ function createCrossRoad(cars, crossroad, container) {
                     x: carImage.width() / 2,
                     y: carImage.height() / 2
                 });
+
+                var circle = new Konva.Circle({
+                    radius: 5,
+                    fill: 'orange',
+                    stroke: 'orange',
+                    x: 0,
+                    y: 0,
+                    strokeWidth: 5
+                });
+
+
+                var carGroup = new Konva.Group({
+                    x: cars[key].Config.Path[0].x,
+                    y: cars[key].Config.Path[0].y,
+                    id: key,
+                    draggable: false,
+                })
+                carGroup.add(carImage);
+                carGroup.add(circle);
 
                 var path = new Konva.Path({
                     x: 0,
@@ -154,17 +171,29 @@ function createCrossRoad(cars, crossroad, container) {
                 var angleSpeed = cars[key].Config.Rotation;
                 current = 0;
 
+                var next = true;
+                var frequency = 3;
+                var curr = 0;
+                var blinkerAnimation = new Konva.Animation(function(frame) {
+
+                    circle.opacity(next ? 1 : 0);
+                    next = !next;
+
+
+
+                }, carLayer);
+
+                blinkerAnimation.start();
+
                 animations[key] = new Konva.Animation(function(frame) {
 
                     pos = pos + 1;
                     pt = path.getPointAtLength(pos * step);
 
-                    var angleDiff = (frame.timeDiff * 90) / 1000;
-
-                    carImage.position({ x: pt.x, y: pt.y });
+                    carGroup.position({ x: pt.x, y: pt.y });
                     if (!done) {
                         current = current + Math.sqrt(angleSpeed * angleSpeed);
-                        carImage.rotate(angleSpeed);
+                        carGroup.rotate(angleSpeed);
                     }
 
                     if (current >= 90) {
@@ -178,15 +207,15 @@ function createCrossRoad(cars, crossroad, container) {
                 var rightOrderQueue = crossroad.RightOrder;
 
                 //nastavim eventy kedy sa ma spustit animacia
-                carImage.on('click', function() {
+                carGroup.on('click', function() {
                     HandleMove(this, rightOrderQueue, animations, stage);
                 });
 
-                carImage.on('tap', function() {
+                carGroup.on('tap', function() {
                     HandleMove(this, rightOrderQueue, animations, stage);
                 });
 
-                carLayer.add(carImage);
+                carLayer.add(carGroup);
             })();
         }
     }
