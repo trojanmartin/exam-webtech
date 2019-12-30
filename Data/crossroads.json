@@ -40,6 +40,8 @@
                     "ImageId": 6,
                     "StartRotate": 0,
                     "Rotation": 5,
+                    "Blinker": 1,
+                    "BlinkerPosition": -10,
                     "Path": [{
                             "x": 350,
                             "y": 250
@@ -66,6 +68,8 @@
                     "ImageId": 2,
                     "StartRotate": 180,
                     "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
                     "Path": [{
                             "x": 800,
                             "y": 120
@@ -84,6 +88,8 @@
                     "ImageId": 3,
                     "StartRotate": -90,
                     "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
                     "Path": [{
                             "x": 650,
                             "y": 400
@@ -109,6 +115,8 @@
                     "ImageId": 6,
                     "StartRotate": 0,
                     "Rotation": 5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
                     "Path": [{
                             "x": 350,
                             "y": 250
@@ -135,6 +143,8 @@
                     "ImageId": 2,
                     "StartRotate": 180,
                     "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
                     "Path": [{
                             "x": 800,
                             "y": 120
@@ -153,6 +163,8 @@
                     "ImageId": 3,
                     "StartRotate": -90,
                     "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
                     "Path": [{
                             "x": 650,
                             "y": 400
@@ -178,6 +190,8 @@
                     "ImageId": 6,
                     "StartRotate": 0,
                     "Rotation": 5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
                     "Path": [{
                             "x": 350,
                             "y": 250
@@ -204,6 +218,8 @@
                     "ImageId": 2,
                     "StartRotate": 180,
                     "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
                     "Path": [{
                             "x": 800,
                             "y": 120
@@ -222,6 +238,8 @@
                     "ImageId": 3,
                     "StartRotate": -90,
                     "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
                     "Path": [{
                             "x": 650,
                             "y": 400
