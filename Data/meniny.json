@@ -2,7 +2,7 @@
         "den": "0101",
         "SKsviatky": "Deň vzniku Slovenskej republiky",
         "CZsviatky": "Den obnovy samostatného českého státu",
-        "SK": "aaa",
+        "SK": "-",
         "HU": "Fruzsina",
         "PL": "Mieszka, Mieczyslawa",
         "AT": "Neujahr"
@@ -1087,6 +1087,7 @@
     },
     {
         "den": "0501",
+        "SK": "Amarila",
         "SKd": "-, Amarila, Pamela",
         "SKsviatky": "Sviatok práce",
         "CZsviatky": "Svátek práce",
@@ -2770,6 +2771,7 @@
     },
     {
         "den": "1102",
+        "SK": "Cézar",
         "SKd": "-, Cézar, Cezária",
         "HU": "Achilles",
         "PL": "Bohdany, Tobiasza",
@@ -3249,6 +3251,7 @@
     },
     {
         "den": "1225",
+        "SK": "-",
         "SKd": "-",
         "SKsviatky": "Prvý sviatok vianočný",
         "CZsviatky": "Svátek vánoční 1",

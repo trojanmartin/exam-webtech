@@ -1,6 +1,11 @@
 var dict1 = {};
 var dict2 = {};
 
+
+$('[data-toggle="tooltip"]').tooltip();
+var t = $('[data-toggle="tooltip"]');
+
+
 function set(json) {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -12,11 +17,21 @@ function set(json) {
 
 
     json.forEach(function(x) {
-        dict1[x.den] = x.SK
+        dict1[x.den] = x.SK;
     })
 
     json.forEach(function(x) {
-        dict2[x.SK] = x.den
+        if ((x.SK).includes(', ')) {
+            var names = (x.SK).split(', ');
+            names.forEach(function(q) {
+                dict2[q] = x.den;
+            })
+        } else {
+            dict2[x.SK] = x.den;
+        }
+
+
+
     })
     var name = dict1[q];
 
@@ -28,6 +43,7 @@ function set(json) {
 }
 
 function load() {
+
     $.getJSON("Data/meniny.json", function(json) {
         set(json);
     })
@@ -42,12 +58,15 @@ function normalizeString(string) {
 
 
 function work() {
+    var checker = false;
+    document.getElementById("output").innerHTML = "";
     var input = document.getElementById("input").value;
+
     try {
         if (hasNumber(input)) {
             var date = input.split(".");
             if (date.length != 2) {
-                throw RangeError;
+                throw 'Error1';
             }
             if (date[0].length == 1) {
                 date[0] = "0" + date[0];
@@ -57,26 +76,48 @@ function work() {
             }
             var q = date[1] + date[0];
             if (dict1[q] == undefined) {
-                throw RangeError;
+                throw 'Error2';
             }
             document.getElementById("output").innerHTML = dict1[q];
         } else {
             input = normalizeString(input);
             Object.keys(dict2).forEach(function(key) {
                 var name = normalizeString(key);
-                if (name.includes(input)) {
+                if (name == input) {
                     document.getElementById("output").innerHTML = dict2[key].substring(2, 4) + "." + dict2[key].substring(0, 2);
+                    checker = true;
+
                 }
 
-            });
-        }
-    } catch (error) {
-        alert("chybne zadany vstup");
-    }
 
+            });
+            if (!checker) throw 'Error3';
+        }
+    } catch (e) {
+        console.log(e);
+        if (e == 'Error1') {
+            $('[data-toggle="tooltip"]').tooltip({ title: "Chybne zadaný formát dátumu DD.MM" });
+            $('[data-toggle="tooltip"]').tooltip('show');
+        } else if (e == 'Error2') {
+            $('[data-toggle="tooltip"]').tooltip({ title: "Zadany dátum je chybný, máte správne poradie DD.MM?" });
+            $('[data-toggle="tooltip"]').tooltip('show');
+        } else if (e == 'Error3') {
+            $('[data-toggle="tooltip"]').tooltip({ title: "Chybne zadané meno" });
+            $('[data-toggle="tooltip"]').tooltip('show');
+        }
+
+    }
 
 }
 
 function hasNumber(myString) {
     return /\d/.test(myString);
 }
+
+$(function() {
+    $(document).on('shown.bs.tooltip', function(e) {
+        setTimeout(function() {
+            $(e.target).tooltip('dispose');
+        }, 2500);
+    });
+});
