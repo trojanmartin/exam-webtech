@@ -11,16 +11,6 @@ const crossListClass = "list-group-item list-group-item-action ";
 const badOrderText = "Nesprávne poradie. Skúste to ešte raz.";
 const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne.";
 
-function counterVisitors() {
-    var n = localStorage.getItem('on_load_counter');
-
-    if (n === null) {
-        n = 0;
-    }
-    n++;
-    localStorage.setItem("on_load_counter", n);
-    return n;
-}
 
 function prepareOnLoad() {
     $.getJSON("Data/crossroads.json", function(json) {
@@ -34,8 +24,6 @@ function prepareOnLoad() {
         }
 
     })
-    var numOfVisitors = counterVisitors();
-    document.getElementById('CounterVisitor').innerHTML += numOfVisitors;
 }
 
 function load(id, container) {
