@@ -1,30 +1,37 @@
 var stageWidth = 1000;
 var stageHeight = 1000;
 
-const VIRTUAL_WIDTH = 1200;
+const VIRTUAL_WIDTH = 1050;
 
 var lastCrossroad;
 
 const mainCanvas = 'road';
-
+const demoCanvas = 'demoRoad'
 
 const crossListClass = "list-group-item  list-group-item-action clearfix d-flex justify-content-between align-items-center ";
-const crossListBtn = "far fa-play-circle";
+const crossListBtn = "far fa-play-circle fa-lg hover";
 const badOrderText = "Nesprávne poradie. Skúste to ešte raz.";
 const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne.";
+
+var demoHandler = function() {}
 
 
 function prepareOnLoad() {
     $.getJSON("Data/crossroads.json", function(json) {
         prepareList(json);
-    })
+    });
 }
 
-function load(id, container) {
+function loadCrossroad(id, containerId) {
+
     $.getJSON("Data/crossroads.json", function(json) {
         lastCrossroad = id;
-        prepareSources(json, id, container);
+        prepareSources(json, id, containerId);
         setActive(id);
+
+        if (containerId == demoCanvas) {
+
+        }
     })
 
 }
@@ -34,7 +41,7 @@ function setActive(id) {
     $(`#${id}cross`).addClass('active');
 }
 
-function prepareSources(json, crossId, container) {
+function prepareSources(json, crossId, containerId) {
 
     var selectedCrossroad;
     var loadedImages = 0;
@@ -72,7 +79,7 @@ function prepareSources(json, crossId, container) {
         cars[car.Id].image = new Image();
         cars[car.Id].image.onload = function() {
             if (++loadedImages >= numImages) {
-                createCrossRoad(cars, crossroad, container);
+                createCrossRoad(cars, crossroad, containerId);
             }
         }
         cars[car.Id].image.Id = car.Id;
@@ -85,15 +92,15 @@ function prepareSources(json, crossId, container) {
     crossroad.image = new Image();
     crossroad.image.onload = function() {
         if (++loadedImages >= numImages) {
-            createCrossRoad(cars, crossroad, container);
+            createCrossRoad(cars, crossroad, containerId);
         }
     }
     crossroad.image.src = selectedCrossroad.Background;
 }
 
-function createCrossRoad(cars, crossroad, container) {
+function createCrossRoad(cars, crossroad, containerId) {
     var stage = new Konva.Stage({
-        container: container,
+        container: containerId,
         width: stageWidth,
         height: stageHeight
     });
@@ -117,6 +124,7 @@ function createCrossRoad(cars, crossroad, container) {
                 var path = new Konva.Path({
                     x: 0,
                     y: 0,
+                    // visible: false
                     stroke: 'cyan'
                 });
 
@@ -220,6 +228,10 @@ function createCrossRoad(cars, crossroad, container) {
                     HandleMove(this, rightOrderQueue, animations, stage);
                 });
 
+                demoHandler = function() {
+                    runDemo(rightOrderQueue, animations);
+                }
+
                 carLayer.add(carGroup);
             })();
         }
@@ -235,10 +247,10 @@ function createCrossRoad(cars, crossroad, container) {
     stage.add(background);
     stage.add(carLayer);
 
-    fitStageIntoParentContainer(stage);
+    fitStageIntoParentContainer(stage, containerId);
 
     window.addEventListener('resize', function() {
-        fitStageIntoParentContainer(stage);
+        fitStageIntoParentContainer(stage, containerId);
     });
 }
 
@@ -257,18 +269,30 @@ function HandleMove(sender, rightOrderQueue, animations, stage) {
     if (CheckRightOrder(sender.attrs.id, rightOrderQueue)) {
         sender.moveToTop();
         animations[sender.attrs.id].start();
-
         if (rightOrderQueue.length == 0) {
-            showModal(succesMessage, "Pokračovať na ďalšiu križovatku", `load(${lastCrossroad + 1 }, ${mainCanvas})`);
+            showInfoModal(succesMessage, "Pokračovať na ďalšiu križovatku", `loadCrossroad(${lastCrossroad + 1 }, "${mainCanvas}")`);
         }
+
     } else {
         stage.destroy();
-        showModal(badOrderText, "Ok");
-        load(lastCrossroad, mainCanvas);
+        showInfoModal(badOrderText, "Ok");
+        loadCrossroad(lastCrossroad, mainCanvas);
     }
 }
 
+function runDemo(rightOrderQueue, animations) {
 
+    animations[rightOrderQueue[0]].start();
+
+    for (let i = 1; i < rightOrderQueue.length; i++) {
+        //code before the pause
+        setTimeout(function() {
+            animations[rightOrderQueue[i]].start();
+        }, i * 1000);
+
+    }
+
+}
 
 function CheckRightOrder(id, orderQueue) {
 
@@ -280,10 +304,10 @@ function CheckRightOrder(id, orderQueue) {
     return false;
 }
 
-function fitStageIntoParentContainer(stage) {
-    const availableWidth = window.innerWidth;
-    const availableHeight = window.innerHeight;
+function fitStageIntoParentContainer(stage, containerId) {
 
+    const availableWidth = $(`#${containerId}`).width();
+    const availableHeight = availableWidth / 16 * 9;
     const scale = availableWidth / VIRTUAL_WIDTH;
 
     stage.setAttrs({
@@ -295,7 +319,7 @@ function fitStageIntoParentContainer(stage) {
     stage.draw();
 }
 
-function showModal(text, primaryButtonText, onPrimaryClick) {
+function showInfoModal(text, primaryButtonText, onPrimaryClick) {
 
     var content = document.createElement('p');
     content.innerText = text;
@@ -315,37 +339,38 @@ function prepareList(json) {
 
 
         var li = document.createElement("li");
-        li.id = `${json.CrossRoads[i].Id}cross`;
+
         li.className = crossListClass;
 
         var cross = document.createElement("a");
         cross.className = "p-0 m-0 flex-grow-1";
-        cross.setAttribute("onclick", `load(${json.CrossRoads[i].Id}, "${mainCanvas}")`);
+        cross.setAttribute("onclick", `loadCrossroad(${json.CrossRoads[i].Id}, "${mainCanvas}")`);
         cross.innerText = json.CrossRoads[i].Name;
 
         li.append(cross);
 
 
         var btn = document.createElement("span");
-        btn.className = crossListBtn
-        btn.setAttribute("onclick", `load(${json.CrossRoads[i].Id}, "demo"`);
+
+
         btn.setAttribute("data-toggle", "modal");
-        btn.setAttribute("data-target", "demo");
-
-
+        btn.setAttribute("data-target", "#demoModal");
+        btn.id = `${json.CrossRoads[i].Id}`;
 
         var span = document.createElement("span");
-
+        span.className = crossListBtn
         span.setAttribute("data-toggle", "tooltip");
         span.setAttribute("data-placement", "top");
         span.setAttribute("title", "Prehrať ukážku");
         btn.append(span);
 
-
         li.append(btn);
-
 
         $("#cros-list").append(li);
     }
 
 }
+
+$(document).on('shown.bs.modal', '#demoModal', function(e) {
+    loadCrossroad(e.relatedTarget.id, demoCanvas)
+});

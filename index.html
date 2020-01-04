@@ -37,68 +37,75 @@
         </div>
     </nav>
 
+    <div class="container-fuild p-0">
+        <div class="row">
+            <div class="col-2 p-0">
 
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper">
-            <div class="list-group list-group-flush" id="cros-list">
+                <!-- Sidebar -->
+                <div class="bg-light border-right mw-175" id="sidebar-wrapper">
+                    <div class="list-group list-group-flush" id="cros-list">
 
 
 
 
-            </div>
-            <div id="CounterVisitor">
-                Počet návštevníkov:
-            </div>
-        </div>
-
-        <div class="container-fuild p-0">
-            <div class="row">
-                <div class="col">
-                    <div class="modal fade" id="demo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-
-                                <div class="modal-body" id="demo">
-                                    <a>sadad</a>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
+                    <div id="CounterVisitor">
+                        Počet návštevníkov:
+                    </div>
+                </div>
+            </div>
 
-
-                    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="infoModalTitle">Informácia</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="col-10 p-0">
+                <div class="modal fade " id="demoModal" tabindex="-1" role="dialog" data-size="modal-lg" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="infoModalTitle">Správne riešenie Križovatky</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                     </button>
-                                </div>
-                                <div class="modal-body" id="infoModalBody">
+                            </div>
+                            <div class="modal-body" id="demoRoad">
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Zatvoriť</button>
-                                    <button type="button" data-dismiss="modal" id="infoModalPrimaryBtn" class="btn btn-primary">Ok</button>
-                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="demoHandler()" id="demoModalRunBtn" class="btn btn-primary">Spustiť ukážku</button>
                             </div>
                         </div>
                     </div>
+                </div>
+
+
+
+                <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="infoModalTitle">Informácia</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                    </button>
+                            </div>
+                            <div class="modal-body" id="infoModalBody">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" data-dismiss="modal" class="btn btn-secondary">Zatvoriť</button>
+                                <button type="button" data-dismiss="modal" id="infoModalPrimaryBtn" class="btn btn-primary">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-90" id="canvas-container">
+                    <div id="road"></div>
 
 
 
                 </div>
-            </div>
-            <div id="canvas-container">
-                <div id="road"></div>
-
 
 
             </div>
-
         </div>
 
     </div>
