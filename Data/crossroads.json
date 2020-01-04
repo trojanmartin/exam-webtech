@@ -40,6 +40,7 @@
             "Id": 1,
             "Name": "Krizovatka c.1",
             "Background": "assets/crossroads/1.png",
+            "Explanation": "Prvé odbáča žlté auto, pretože zákruta, do ktorej odbáča, je po jeho pravici a preto má prednosť pred zeleným autom. Sivé dáva prednost zelenému (pravidlo pravej ruky). Správne poradie /1.žlté, 2.zelené, 3.sivé",
             "RightOrder": [6, 2, 3],
             "Cars": [{
                     "ImageId": 6,
@@ -127,6 +128,7 @@
             "Id": 2,
             "Name": "Krizovatka c.2",
             "Background": "assets/crossroads/2.png",
+            "Explanation": "Zelené auto je na hlavnej ceste, takže má prednosť. Správna odpoveď /1.zelené, 2.modré/",
             "RightOrder": [6, 3, 2],
             "Cars": [{
                     "ImageId": 6,
@@ -202,6 +204,7 @@
             "Id": 3,
             "Name": "Krizovatka c.3",
             "Background": "assets/crossroads/3.png",
+            "Explanation": "Zelené auto je na hlavnej ceste, takže má prednosť. Mdoré auto stojí na STOP-ke. Správna odpoveď /1.zelené, 2.modré/",
             "RightOrder": [6, 2, 3],
             "Cars": [{
                     "ImageId": 6,
@@ -272,11 +275,26 @@
                     ]
                 }
             ]
+        }, {
+            "Id": 4,
+            "Name": "Krizovatka c.4",
+            "Background": "assets/crossroads/4.png",
+            "Explanation": "Červené a modré auto sú na hlavnej ceste takže majú prednosť. Správna odpoveď /1.červené/modré, 2.zelené/",
+            "RightOrder": [6, 2, 3],
+            "Cars": []
+        }, {
+            "Id": 5,
+            "Name": "Krizovatka c.5",
+            "Background": "assets/crossroads/5.png",
+            "Explanation": "Sivé má prednosť pred modrým autom kvôli pravidlu pravej ruky. Potom má prednosť zelené auto taktiež kvôli tomu istému pravidlu. Správna odpoveď /1.sivé, 2.modré, 3.zelené, 4.červené",
+            "RightOrder": [6, 2, 3],
+            "Cars": []
         },
         {
             "Id": 6,
             "Name": "Krizovatka c.6",
             "Background": "assets/crossroads/6.png",
+            "Explanation": "Zelené auto má prednosť, pretože je na hlavnej ceste. Modré auto má prednosť pred červeným, kvôli tomu, že skôr vôjde na vozovku. Správna odpoveď /1.zelené, 2.modré, 3.červené",
             "RightOrder": [2, 1, 4],
             "Cars": [{
                     "ImageId": 2,
@@ -341,7 +359,7 @@
             "Name": "Krizovatka c.7",
             "Background": "assets/crossroads/7.png",
             "RightOrder": [3, 2, 4, 1],
-            "Explanation": "nejakz skurveny text o kriyovatka",
+            "Explanation": "Zipsové pravidlo. Autá musia ísť na striedačku. Správna odpoveď /1.sivé, 2.zelené, 3.červené, 4.modré/",
             "Cars": [{
                     "ImageId": 3,
                     "StartRotate": 0,
@@ -429,6 +447,7 @@
             "Id": 8,
             "Name": "Krizovatka c.8",
             "Background": "assets/crossroads/8.png",
+            "Explanation": "Červené auto má prednosť pred sivým (pravidlo pravej ruky).. potom si už ide každý tak, ako chce. Správna odpoveď /1.červené, 2.sivé, 3.električka/zelené/modré /",
             "RightOrder": [7, 2, 1, 3, 4],
             "Cars": [{
                     "ImageId": 7,
@@ -528,6 +547,7 @@
             "Id": 9,
             "Name": "Krizovatka c.9",
             "Background": "assets/crossroads/9.png",
+            "Explanation": "Modré auto má prednosť pred zeleným, pretože zelené auto musí zastaviť pred kurhovým objazdom. Správna odpoveď /1.modré, 2.zelené",
             "RightOrder": [1, 2],
             "Cars": [{
                     "ImageId": 2,
@@ -647,6 +667,7 @@
             "Id": 10,
             "Name": "Krizovatka c.10",
             "Background": "assets/crossroads/10.png",
+            "Explanation": "Červené je na hlavnej ceste a ide rovno .. takže má prednosť. Potom zelené má prednosť pred žltým, pretože odbáča z hlavnej cesty. Správna odpoveď /1.červené, 2.zelené, 3.žlté/",
             "RightOrder": [4, 2, 6],
             "Cars": [{
                     "ImageId": 6,
@@ -705,6 +726,41 @@
                     ]
                 }
             ]
+        }, {
+            "Id": 11,
+            "Name": "Krizovatka c.11",
+            "Background": "assets/crossroads/11.png",
+            "Explanation": "Zelené auto má zelenú, takže má prednosť. Červené a modré auto musia počkať kým prejdú chodci. Kedže má červené auto zelenú smerom doprava, može ísť hneď ako prejdú chodci. Správna odpoveď /1.zelené, 2.červené, 3.modré/",
+            "RightOrder": [6, 2, 3],
+            "Cars": []
+        }, {
+            "Id": 12,
+            "Name": "Krizovatka c.12",
+            "Background": "assets/crossroads/12.png",
+            "Explanation": "Červené auto má prednosť, pretože má zelenú jeho smerom. Potom ide všetko ostatné. Správna odpoveď /1.červené, 2.zvyšok/",
+            "RightOrder": [6, 2, 3],
+            "Cars": []
+        }, {
+            "Id": 13,
+            "Name": "Krizovatka c.13",
+            "Background": "assets/crossroads/13.png",
+            "Explanation": "Červené auto má prednosť pred zeleným (pravidlo pravej ruky). Žlté auto dáva prednosť pred zeleným, pretože zelené auto ide rovno. Správna odpoveď /1.červené, 2.zelené, 3.žlté/",
+            "RightOrder": [6, 2, 3],
+            "Cars": []
+        }, {
+            "Id": 14,
+            "Name": "Krizovatka c.14",
+            "Background": "assets/crossroads/14.png",
+            "Explanation": "Zelené s modrým autom majú prednosť, pretože sú na hlavnej ceste. Potom zvyšok. Správna odpoveď /1.zelené/modré, 2.obe električky/",
+            "RightOrder": [6, 2, 3],
+            "Cars": []
+        }, {
+            "Id": 15,
+            "Name": "Krizovatka c.15",
+            "Background": "assets/crossroads/15.png",
+            "Explanation": "TODO",
+            "RightOrder": [6, 2, 3],
+            "Cars": []
         }
     ]
 }
