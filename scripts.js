@@ -114,7 +114,7 @@ function createCrossRoad(cars, crossroad, containerId) {
     var carLayer = new Konva.Layer();
     var animations = {};
 
-    for (var key in cars) {
+    for (let key in cars) {
         {
             (function() {
 
@@ -152,20 +152,36 @@ function createCrossRoad(cars, crossroad, containerId) {
                 var angleSpeed = cars[key].Config.Rotation;
                 current = 0;
 
-                animations[key] = new Konva.Animation(function(frame) {
+                var pathIterator = 0;
+                var maxPathIterator = cars[key].Config.Path.length - 1;
+                var endAngle;
 
+                animations[key] = new Konva.Animation(function(frame) {
                     pos = pos + 1;
                     pt = path.getPointAtLength(pos * step);
-
                     carGroup.position({ x: pt.x, y: pt.y });
+
+                    endAngle = cars[key].Config.Path[pathIterator].rotate;
+
+                    if (endAngle == 0) {
+                        angleSpeed = 0;
+                    } else {
+                        angleSpeed = cars[key].Config.Rotation;
+                    }
+
+                    if (endAngle < 0) {
+                        angleSpeed = angleSpeed * -1;
+                    }
+
+
                     if (!done) {
                         current = current + Math.sqrt(angleSpeed * angleSpeed);
                         carGroup.rotate(angleSpeed);
                     }
 
-                    if (current >= 90) {
+                    if (current >= Math.abs(endAngle)) {
                         current = 0;
-                        done = true;
+                        pathIterator = (pathIterator < maxPathIterator) ? pathIterator + 1 : maxPathIterator;
                     }
 
                     if (pos == steps) {
