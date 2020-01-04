@@ -22,6 +22,11 @@ function prepareOnLoad() {
     });
 }
 
+function loadDemo(id) {
+    loadCrossroad(id, mainCanvas);
+    loadCrossroad(id, demoCanvas);
+}
+
 function loadCrossroad(id, containerId) {
 
     $.getJSON("Data/crossroads.json", function(json) {
@@ -228,9 +233,12 @@ function createCrossRoad(cars, crossroad, containerId) {
                     HandleMove(this, rightOrderQueue, animations, stage);
                 });
 
-                demoHandler = function() {
-                    runDemo(rightOrderQueue, animations);
+                if (containerId == demoCanvas) {
+                    demoHandler = function() {
+                        runDemo(rightOrderQueue, animations);
+                    }
                 }
+
 
                 carLayer.add(carGroup);
             })();
@@ -341,7 +349,7 @@ function prepareList(json) {
         var li = document.createElement("li");
 
         li.className = crossListClass;
-
+        li.id = `${json.CrossRoads[i].Id}cross`;
         var cross = document.createElement("a");
         cross.className = "p-0 m-0 flex-grow-1";
         cross.setAttribute("onclick", `loadCrossroad(${json.CrossRoads[i].Id}, "${mainCanvas}")`);
@@ -372,5 +380,6 @@ function prepareList(json) {
 }
 
 $(document).on('shown.bs.modal', '#demoModal', function(e) {
-    loadCrossroad(e.relatedTarget.id, demoCanvas)
+    loadDemo(e.relatedTarget.id);
+    // loadCrossroad(e.relatedTarget.id, demoCanvas)
 });
