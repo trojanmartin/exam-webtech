@@ -40,7 +40,7 @@
                     "ImageId": 6,
                     "StartRotate": 0,
                     "Rotation": 5,
-                    "Blinker": 1,
+                    "Blinker": 0,
                     "BlinkerPosition": -10,
                     "Path": [{
                             "x": 350,

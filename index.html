@@ -3,8 +3,11 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <script src="https://unpkg.com/konva@4.0.18/konva.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="scripts.js"></script>
@@ -39,40 +42,62 @@
         <!-- Sidebar -->
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush" id="cros-list">
+
+
+
+
             </div>
             <div id="CounterVisitor">
                 Počet návštevníkov:
             </div>
         </div>
 
+        <div class="container-fuild p-0">
+            <div class="row">
+                <div class="col">
+                    <div class="modal fade" id="demo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
 
-        <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="infoModalTitle">Informácia</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                    </div>
-                    <div class="modal-body" id="infoModalBody">
+                                <div class="modal-body" id="demo">
+                                    <a>sadad</a>
+                                </div>
 
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" data-dismiss="modal" class="btn btn-secondary">Zatvoriť</button>
-                        <button type="button" data-dismiss="modal" id="infoModalPrimaryBtn" class="btn btn-primary">Ok</button>
+
+
+                    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="infoModalTitle">Informácia</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                    </button>
+                                </div>
+                                <div class="modal-body" id="infoModalBody">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Zatvoriť</button>
+                                    <button type="button" data-dismiss="modal" id="infoModalPrimaryBtn" class="btn btn-primary">Ok</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
+
                 </div>
             </div>
-        </div>
+            <div id="canvas-container">
+                <div id="road"></div>
 
-        <div class="row">
-            <div class="col">
-                <div id="canvas-container">
-                    <div id="road"></div>
-                </div>
+
+
             </div>
-
 
         </div>
 

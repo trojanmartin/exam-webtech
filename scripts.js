@@ -7,22 +7,16 @@ var lastCrossroad;
 
 const mainCanvas = 'road';
 
-const crossListClass = "list-group-item list-group-item-action ";
+
+const crossListClass = "list-group-item  list-group-item-action clearfix d-flex justify-content-between align-items-center ";
+const crossListBtn = "far fa-play-circle";
 const badOrderText = "Nesprávne poradie. Skúste to ešte raz.";
 const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne.";
 
 
 function prepareOnLoad() {
     $.getJSON("Data/crossroads.json", function(json) {
-        for (var i = 0; i < json.CrossRoads.length; i++) {
-            var cross = document.createElement("a");
-            cross.className = crossListClass;
-            cross.id = `${json.CrossRoads[i].Id}cross`;
-            cross.setAttribute("onclick", `load(${json.CrossRoads[i].Id}, ${mainCanvas})`);
-            cross.innerText = json.CrossRoads[i].Name;
-            $("#cros-list").append(cross);
-        }
-
+        prepareList(json);
     })
 }
 
@@ -36,7 +30,7 @@ function load(id, container) {
 }
 
 function setActive(id) {
-    $("#cros-list").children('a').removeClass('active');
+    $("#cros-list").children('li').removeClass('active');
     $(`#${id}cross`).addClass('active');
 }
 
@@ -78,7 +72,7 @@ function prepareSources(json, crossId, container) {
         cars[car.Id].image = new Image();
         cars[car.Id].image.onload = function() {
             if (++loadedImages >= numImages) {
-                createCrossRoad(cars, crossroad);
+                createCrossRoad(cars, crossroad, container);
             }
         }
         cars[car.Id].image.Id = car.Id;
@@ -91,7 +85,7 @@ function prepareSources(json, crossId, container) {
     crossroad.image = new Image();
     crossroad.image.onload = function() {
         if (++loadedImages >= numImages) {
-            createCrossRoad(cars, crossroad);
+            createCrossRoad(cars, crossroad, container);
         }
     }
     crossroad.image.src = selectedCrossroad.Background;
@@ -99,7 +93,7 @@ function prepareSources(json, crossId, container) {
 
 function createCrossRoad(cars, crossroad, container) {
     var stage = new Konva.Stage({
-        container: 'road',
+        container: container,
         width: stageWidth,
         height: stageHeight
     });
@@ -112,30 +106,6 @@ function createCrossRoad(cars, crossroad, container) {
         {
             (function() {
 
-                var carImage = new Konva.Image({
-                    image: cars[key].image,
-                    width: 120,
-                    height: 70,
-                    id: key,
-                    draggable: false,
-                });
-
-                carImage.setOffset({
-                    x: carImage.width() / 2,
-                    y: carImage.height() / 2
-                });
-
-
-                var circle = new Konva.Circle({
-                    radius: 5,
-                    fill: 'orange',
-                    stroke: 'orange',
-                    x: (carImage.width() / 2) - 10,
-                    y: (carImage.height() / 2) * cars[key].Config.Blinker + cars[key].Config.BlinkerPosition,
-                    strokeWidth: 5
-                });
-
-
                 var carGroup = new Konva.Group({
                     x: cars[key].Config.Path[0].x,
                     y: cars[key].Config.Path[0].y,
@@ -143,8 +113,6 @@ function createCrossRoad(cars, crossroad, container) {
                     id: key,
                     draggable: false,
                 })
-                carGroup.add(carImage);
-                carGroup.add(circle);
 
                 var path = new Konva.Path({
                     x: 0,
@@ -171,23 +139,6 @@ function createCrossRoad(cars, crossroad, container) {
                 var angleSpeed = cars[key].Config.Rotation;
                 current = 0;
 
-                var next = true;
-                var time = 0;
-                var blinkerAnimation = new Konva.Animation(function(frame) {
-                    time = time + frame.timeDiff;
-                    if (time > 500) {
-                        circle.opacity(next ? 1 : 0);
-                        next = !next;
-                        time = 0;
-                    }
-
-
-
-
-                }, carLayer);
-
-                blinkerAnimation.start();
-
                 animations[key] = new Konva.Animation(function(frame) {
 
                     pos = pos + 1;
@@ -204,8 +155,59 @@ function createCrossRoad(cars, crossroad, container) {
                         done = true;
                     }
 
+                    if (pos == steps) {
+                        animations[key].stop();
+                        carGroup.destroy();
+                    }
+
 
                 }, carLayer);
+
+
+                var carImage = new Konva.Image({
+                    image: cars[key].image,
+                    width: 120,
+                    height: 70,
+                    id: key,
+                    draggable: false,
+                });
+
+                carImage.setOffset({
+                    x: carImage.width() / 2,
+                    y: carImage.height() / 2
+                });
+
+                carGroup.add(carImage);
+
+
+                if (cars[key].Config.Blinker != 0) {
+                    var blinker = new Konva.Circle({
+                        radius: 5,
+                        fill: 'orange',
+                        stroke: 'orange',
+                        x: (carImage.width() / 2) - 10,
+                        y: (carImage.height() / 2) * cars[key].Config.Blinker + cars[key].Config.BlinkerPosition,
+                        strokeWidth: 5
+                    });
+
+                    var next = true;
+                    var time = 0;
+                    var blinkerAnimation = new Konva.Animation(function(frame) {
+                        time = time + frame.timeDiff;
+                        if (time > 500) {
+                            blinker.opacity(next ? 1 : 0);
+                            next = !next;
+                            time = 0;
+                        } else {
+                            return false;
+                        }
+                    }, carLayer);
+
+                    blinkerAnimation.start();
+
+                    carGroup.add(blinker);
+                }
+
 
                 var rightOrderQueue = crossroad.RightOrder;
 
@@ -262,7 +264,7 @@ function HandleMove(sender, rightOrderQueue, animations, stage) {
     } else {
         stage.destroy();
         showModal(badOrderText, "Ok");
-        load(lastCrossroad);
+        load(lastCrossroad, mainCanvas);
     }
 }
 
@@ -306,4 +308,44 @@ function showModal(text, primaryButtonText, onPrimaryClick) {
     document.querySelector('#infoModalPrimaryBtn').setAttribute("onclick", onPrimaryClick);
 
     $('#infoModal').modal('show');
+}
+
+function prepareList(json) {
+    for (var i = 0; i < json.CrossRoads.length; i++) {
+
+
+        var li = document.createElement("li");
+        li.id = `${json.CrossRoads[i].Id}cross`;
+        li.className = crossListClass;
+
+        var cross = document.createElement("a");
+        cross.className = "p-0 m-0 flex-grow-1";
+        cross.setAttribute("onclick", `load(${json.CrossRoads[i].Id}, "${mainCanvas}")`);
+        cross.innerText = json.CrossRoads[i].Name;
+
+        li.append(cross);
+
+
+        var btn = document.createElement("span");
+        btn.className = crossListBtn
+        btn.setAttribute("onclick", `load(${json.CrossRoads[i].Id}, "demo"`);
+        btn.setAttribute("data-toggle", "modal");
+        btn.setAttribute("data-target", "demo");
+
+
+
+        var span = document.createElement("span");
+
+        span.setAttribute("data-toggle", "tooltip");
+        span.setAttribute("data-placement", "top");
+        span.setAttribute("title", "Prehrať ukážku");
+        btn.append(span);
+
+
+        li.append(btn);
+
+
+        $("#cros-list").append(li);
+    }
+
 }
