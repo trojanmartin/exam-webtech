@@ -3,9 +3,10 @@ Krizovatka2ex - Zelene auto ide rovno, modre auto smerovka do prava (z nasho poh
 Krizovatka3ex - zelele auto ide rovno (hlavna cesta), modre auto chce ist rovno vedlajsia cesta so STOP --> 1.zelene 2. modre
 Krizovatka4ex - zelene auto chce ist rovno, cervene doprava, modre smerovka dolava --> 1. cervene/modre 2. zelene
 Krizovatka5ex - 1. sive 2. modre 3. zelene 4. cervene (vsetky idu rovno)
-Krizovatka6ex - 1. zelene 2. modre 3. zlte (smerovky --> zlte doprava, modre doprava)
-Krizovatka7ex - zipsove pravidlo :D
-Krizovatka8ex - 1. elektricka 2. zelene 3. modre 4. zlte 5. cervene (nie som si isty :D)
+
+Krizovatka6ex (2,1,6) - 1. zelene 2. modre 3. zlte (smerovky --> zlte doprava, modre doprava)
+Krizovatka7ex (3,2,4,1) - zipsove pravidlo :D
+Krizovatka8ex (7,2,1)- 1. elektricka 2. zelene 3. modre 4. zlte 5. cervene (nie som si isty :D)
 Krizovatka9ex - 1. elektricka/sive auto, 2.zelene, 3. cervene (smerovky --> sive dolava, zelene dohora, cervene dolava)
 Krizovatka10ex - 1.zelene 2. cervene/zlte (smerovky --> zelene dolava, cervene doprava, zlte rovno)
 

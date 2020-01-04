@@ -28,6 +28,11 @@
             "Color": "Yellow",
             "Id": 6,
             "Path": "assets/cars/yellow.png"
+        },
+        {
+            "Color": "Trolley",
+            "Id": 7,
+            "Path": "assets/cars/trolley.png"
         }
     ],
 
@@ -251,6 +256,227 @@
                         {
                             "x": 0,
                             "y": 120
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": 6,
+            "Name": "Krizovatka c.6",
+            "Background": "assets/crossroads/6.png",
+            "RightOrder": [2, 1, 4],
+            "Cars": [{
+                    "ImageId": 2,
+                    "StartRotate": 0,
+                    "Rotation": 0,
+                    "Blinker": 0,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 370,
+                            "y": 350
+                        },
+                        {
+                            "x": 1500,
+                            "y": 350
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 1,
+                    "StartRotate": 270,
+                    "Rotation": 5,
+                    "Blinker": 1,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 650,
+                            "y": 450
+                        },
+                        {
+                            "x": 650,
+                            "y": 350
+                        },
+                        {
+                            "x": 1500,
+                            "y": 350
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 4,
+                    "StartRotate": 90,
+                    "Rotation": 5,
+                    "Blinker": 1,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 530,
+                            "y": 120
+                        },
+                        {
+                            "x": 530,
+                            "y": 350
+                        },
+                        {
+                            "x": -100,
+                            "y": 350
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": 7,
+            "Name": "Krizovatka c.7",
+            "Background": "assets/crossroads/7.png",
+            "RightOrder": [3, 2, 4, 1],
+            "Cars": [{
+                    "ImageId": 3,
+                    "StartRotate": 0,
+                    "Rotation": 0,
+                    "Blinker": 0,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 370,
+                            "y": 450
+                        },
+                        {
+                            "x": 1500,
+                            "y": 450
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 2,
+                    "StartRotate": 0,
+                    "Rotation": 5,
+                    "Blinker": 1,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 350,
+                            "y": 350
+                        },
+                        {
+                            "x": 470,
+                            "y": 450
+                        },
+                        {
+                            "x": 1500,
+                            "y": 450
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 4,
+                    "StartRotate": 0,
+                    "Rotation": 0,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 200,
+                            "y": 450
+                        },
+                        {
+                            "x": 1500,
+                            "y": 450
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 1,
+                    "StartRotate": 0,
+                    "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 170,
+                            "y": 350
+                        },
+                        {
+                            "x": 240,
+                            "y": 450
+                        },
+                        {
+                            "x": 1500,
+                            "y": 450
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": 8,
+            "Name": "Krizovatka c.8",
+            "Background": "assets/crossroads/8.png",
+            "RightOrder": [3, 2, 4, 1],
+            "Cars": [{
+                    "ImageId": 3,
+                    "StartRotate": 0,
+                    "Rotation": 0,
+                    "Blinker": 0,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 370,
+                            "y": 450
+                        },
+                        {
+                            "x": 1500,
+                            "y": 450
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 2,
+                    "StartRotate": 0,
+                    "Rotation": 5,
+                    "Blinker": 1,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 350,
+                            "y": 350
+                        },
+                        {
+                            "x": 470,
+                            "y": 450
+                        },
+                        {
+                            "x": 1500,
+                            "y": 450
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 4,
+                    "StartRotate": 0,
+                    "Rotation": 0,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 200,
+                            "y": 450
+                        },
+                        {
+                            "x": 1500,
+                            "y": 450
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 1,
+                    "StartRotate": 0,
+                    "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 170,
+                            "y": 350
+                        },
+                        {
+                            "x": 240,
+                            "y": 450
+                        },
+                        {
+                            "x": 1500,
+                            "y": 450
                         }
                     ]
                 }
