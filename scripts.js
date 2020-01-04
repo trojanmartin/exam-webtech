@@ -22,6 +22,11 @@ function prepareOnLoad() {
     });
 }
 
+function loadDemo(id) {
+    loadCrossroad(id, mainCanvas);
+    loadCrossroad(id, demoCanvas);
+}
+
 function loadCrossroad(id, containerId) {
 
     $.getJSON("Data/crossroads.json", function(json) {
@@ -109,7 +114,7 @@ function createCrossRoad(cars, crossroad, containerId) {
     var carLayer = new Konva.Layer();
     var animations = {};
 
-    for (var key in cars) {
+    for (let key in cars) {
         {
             (function() {
 
@@ -147,20 +152,36 @@ function createCrossRoad(cars, crossroad, containerId) {
                 var angleSpeed = cars[key].Config.Rotation;
                 current = 0;
 
-                animations[key] = new Konva.Animation(function(frame) {
+                var pathIterator = 0;
+                var maxPathIterator = cars[key].Config.Path.length - 1;
+                var endAngle;
 
+                animations[key] = new Konva.Animation(function(frame) {
                     pos = pos + 1;
                     pt = path.getPointAtLength(pos * step);
-
                     carGroup.position({ x: pt.x, y: pt.y });
+
+                    endAngle = cars[key].Config.Path[pathIterator].rotate;
+
+                    if (endAngle == 0) {
+                        angleSpeed = 0;
+                    } else {
+                        angleSpeed = cars[key].Config.Rotation;
+                    }
+
+                    if (endAngle < 0) {
+                        angleSpeed = angleSpeed * -1;
+                    }
+
+
                     if (!done) {
                         current = current + Math.sqrt(angleSpeed * angleSpeed);
                         carGroup.rotate(angleSpeed);
                     }
 
-                    if (current >= 90) {
+                    if (current >= Math.abs(endAngle)) {
                         current = 0;
-                        done = true;
+                        pathIterator = (pathIterator < maxPathIterator) ? pathIterator + 1 : maxPathIterator;
                     }
 
                     if (pos == steps) {
@@ -228,9 +249,12 @@ function createCrossRoad(cars, crossroad, containerId) {
                     HandleMove(this, rightOrderQueue, animations, stage);
                 });
 
-                demoHandler = function() {
-                    runDemo(rightOrderQueue, animations);
+                if (containerId == demoCanvas) {
+                    demoHandler = function() {
+                        runDemo(rightOrderQueue, animations);
+                    }
                 }
+
 
                 carLayer.add(carGroup);
             })();
@@ -341,7 +365,7 @@ function prepareList(json) {
         var li = document.createElement("li");
 
         li.className = crossListClass;
-
+        li.id = `${json.CrossRoads[i].Id}cross`;
         var cross = document.createElement("a");
         cross.className = "p-0 m-0 flex-grow-1";
         cross.setAttribute("onclick", `loadCrossroad(${json.CrossRoads[i].Id}, "${mainCanvas}")`);
@@ -372,5 +396,6 @@ function prepareList(json) {
 }
 
 $(document).on('shown.bs.modal', '#demoModal', function(e) {
-    loadCrossroad(e.relatedTarget.id, demoCanvas)
+    loadDemo(e.relatedTarget.id);
+    // loadCrossroad(e.relatedTarget.id, demoCanvas)
 });
