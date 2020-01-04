@@ -45,27 +45,33 @@
                     "ImageId": 6,
                     "StartRotate": 0,
                     "Rotation": 5,
-                    "Blinker": 0,
+                    "Blinker": 1,
                     "BlinkerPosition": -10,
                     "Path": [{
                             "x": 350,
-                            "y": 250
+                            "y": 250,
+                            "rotate": 45
+
                         },
                         {
                             "x": 530,
-                            "y": 250
+                            "y": 250,
+                            "rotate": 45
                         },
                         {
                             "x": 530,
-                            "y": 250
+                            "y": 250,
+                            "rotate": 0
                         },
                         {
                             "x": 530,
-                            "y": 450
+                            "y": 450,
+                            "rotate": 0
                         },
                         {
                             "x": 530,
-                            "y": 750
+                            "y": 750,
+                            "rotate": 0
                         }
                     ]
                 },
@@ -77,15 +83,18 @@
                     "BlinkerPosition": 10,
                     "Path": [{
                             "x": 800,
-                            "y": 120
+                            "y": 120,
+                            "rotate": 45
                         },
                         {
                             "x": 500,
-                            "y": 120
+                            "y": 120,
+                            "rotate": 45
                         },
                         {
                             "x": 500,
-                            "y": 750
+                            "y": 750,
+                            "rotate": 0
                         }
                     ]
                 },
@@ -97,15 +106,18 @@
                     "BlinkerPosition": 10,
                     "Path": [{
                             "x": 650,
-                            "y": 400
+                            "y": 400,
+                            "rotate": 25
                         },
                         {
                             "x": 650,
-                            "y": 120
+                            "y": 120,
+                            "rotate": 65
                         },
                         {
                             "x": 0,
-                            "y": 120
+                            "y": 120,
+                            "rotate": 0
                         }
                     ]
                 }
@@ -337,31 +349,36 @@
                     "BlinkerPosition": 10,
                     "Path": [{
                             "x": 370,
-                            "y": 450
+                            "y": 450,
+                            "rotate": 0
                         },
                         {
                             "x": 1500,
-                            "y": 450
+                            "y": 450,
+                            "rotate": 0
                         }
                     ]
                 },
                 {
                     "ImageId": 2,
                     "StartRotate": 0,
-                    "Rotation": 5,
+                    "Rotation": 10,
                     "Blinker": 1,
                     "BlinkerPosition": -10,
                     "Path": [{
                             "x": 350,
-                            "y": 350
+                            "y": 350,
+                            "rotate": 45
                         },
                         {
                             "x": 470,
-                            "y": 450
+                            "y": 450,
+                            "rotate": -50
                         },
                         {
                             "x": 1500,
-                            "y": 450
+                            "y": 450,
+                            "rotate": 0
                         }
                     ]
                 },
@@ -374,6 +391,7 @@
                     "Path": [{
                             "x": 200,
                             "y": 450
+
                         },
                         {
                             "x": 1500,
@@ -384,20 +402,23 @@
                 {
                     "ImageId": 1,
                     "StartRotate": 0,
-                    "Rotation": -5,
+                    "Rotation": 10,
                     "Blinker": 1,
                     "BlinkerPosition": -10,
                     "Path": [{
                             "x": 170,
-                            "y": 350
+                            "y": 350,
+                            "rotate": 45
                         },
                         {
                             "x": 240,
-                            "y": 450
+                            "y": 450,
+                            "rotate": -50
                         },
                         {
                             "x": 1500,
-                            "y": 450
+                            "y": 450,
+                            "rotate": 0
                         }
                     ]
                 }
@@ -625,44 +646,60 @@
             "Id": 10,
             "Name": "Krizovatka c.10",
             "Background": "assets/crossroads/10.png",
-            "RightOrder": [1, 2],
+            "RightOrder": [4, 2, 6],
             "Cars": [{
-                    "ImageId": 2,
-                    "StartRotate": -90,
+                    "ImageId": 6,
+                    "StartRotate": -140,
                     "Rotation": -2,
-                    "Blinker": 1,
-                    "BlinkerPosition": -10,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
                     "Path": [{
-                            "x": 650,
-                            "y": 500
+                            "x": 780,
+                            "y": 410
                         },
                         {
-                            "x": 750,
-                            "y": 370
+                            "x": 400,
+                            "y": 170
                         },
                         {
-                            "x": 800,
-                            "y": 350
+                            "x": -100,
+                            "y": 170
                         }
                     ]
                 },
                 {
                     "ImageId": 2,
-                    "StartRotate": -90,
-                    "Rotation": -2,
-                    "Blinker": 1,
+                    "StartRotate": 180,
+                    "Rotation": -6,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 850,
+                            "y": 160
+                        },
+                        {
+                            "x": 550,
+                            "y": 350
+                        },
+                        {
+                            "x": 850,
+                            "y": 600
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 4,
+                    "StartRotate": 0,
+                    "Rotation": 0,
+                    "Blinker": 0,
                     "BlinkerPosition": -10,
                     "Path": [{
-                            "x": 650,
-                            "y": 500
+                            "x": 310,
+                            "y": 270
                         },
                         {
-                            "x": 750,
-                            "y": 370
-                        },
-                        {
-                            "x": 800,
-                            "y": 350
+                            "x": 1100,
+                            "y": 270
                         }
                     ]
                 }
