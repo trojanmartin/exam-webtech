@@ -620,6 +620,53 @@
                     ]
                 }
             ]
+        },
+        {
+            "Id": 10,
+            "Name": "Krizovatka c.10",
+            "Background": "assets/crossroads/10.png",
+            "RightOrder": [1, 2],
+            "Cars": [{
+                    "ImageId": 2,
+                    "StartRotate": -90,
+                    "Rotation": -2,
+                    "Blinker": 1,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 650,
+                            "y": 500
+                        },
+                        {
+                            "x": 750,
+                            "y": 370
+                        },
+                        {
+                            "x": 800,
+                            "y": 350
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 2,
+                    "StartRotate": -90,
+                    "Rotation": -2,
+                    "Blinker": 1,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 650,
+                            "y": 500
+                        },
+                        {
+                            "x": 750,
+                            "y": 370
+                        },
+                        {
+                            "x": 800,
+                            "y": 350
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
