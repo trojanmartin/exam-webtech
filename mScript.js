@@ -7,6 +7,17 @@ var dict2 = {};
 //basic tooltip setup
 $('[data-toggle="tooltip"]').tooltip();
 
+function counterVisitors() {
+    var n = localStorage.getItem('on_load_counter');
+
+    if (n === null) {
+        n = 0;
+    }
+    n++;
+    localStorage.setItem("on_load_counter", n);
+    return n;
+}
+
 
 //onload function just to get data from json
 function load() {
@@ -14,6 +25,8 @@ function load() {
     $.getJSON("Data/meniny.json", function(json) {
         set(json);
     })
+    var numOfVisitors = counterVisitors();
+    document.getElementById('CounterVisitor').innerHTML += numOfVisitors;
 
 }
 
