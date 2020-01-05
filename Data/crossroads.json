@@ -447,7 +447,15 @@
             "Name": "Krizovatka c.8",
             "Background": "assets/crossroads/8.png",
             "Explanation": "Červené auto má prednosť pred sivým (pravidlo pravej ruky).. potom si už ide každý tak, ako chce. Správna odpoveď /1.červené, 2.sivé, 3.električka/zelené/modré /",
-            "RightOrder": [4, 3, 7, 2, 1],
+            "RightOrder": [
+                [4, 3, 7, 2, 1],
+                [4, 3, 7, 1, 2],
+                [4, 3, 1, 2, 7],
+                [4, 3, 1, 7, 2],
+                [4, 3, 2, 1, 2],
+                [4, 3, 2, 2, 1]
+
+            ],
             "Cars": [{
                     "ImageId": 7,
                     "StartRotate": 90,
