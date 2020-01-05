@@ -315,20 +315,23 @@
                 {
                     "ImageId": 1,
                     "StartRotate": 270,
-                    "Rotation": 5,
+                    "Rotation": 10,
                     "Blinker": 1,
                     "BlinkerPosition": -10,
                     "Path": [{
                             "x": 650,
-                            "y": 450
+                            "y": 450,
+                            "rotate": 0
                         },
                         {
                             "x": 650,
-                            "y": 350
+                            "y": 350,
+                            "rotate": 45
                         },
                         {
                             "x": 1500,
-                            "y": 350
+                            "y": 350,
+                            "rotate": -45
                         }
                     ]
                 },
