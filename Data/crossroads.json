@@ -775,8 +775,74 @@
             "Name": "Krizovatka c.11",
             "Background": "assets/crossroads/11.png",
             "Explanation": "Zelené auto má zelenú, takže má prednosť. Červené a modré auto musia počkať kým prejdú chodci. Kedže má červené auto zelenú smerom doprava, može ísť hneď ako prejdú chodci. Správna odpoveď /1.zelené, 2.červené, 3.modré/",
-            "RightOrder": [6, 2, 3],
-            "Cars": []
+            "RightOrder": [2, 4, 1],
+            "Cars": [{
+                "ImageId": 2,
+                "StartRotate": 0,
+                "Rotation": -5,
+                "Blinker": 0,
+                "BlinkerPosition": -10,
+                "Path": [{
+                        "x": 300,
+                        "y": 275,
+                        "rotate": 0
+                    },
+                    {
+                        "x": 1500,
+                        "y": 275,
+                        "rotate": 0
+                    }
+                ]
+            }, {
+                "ImageId": 1,
+                "StartRotate": -90,
+                "Rotation": -5,
+                "Blinker": 0,
+                "BlinkerPosition": -10,
+                "Path": [{
+                        "x": 575,
+                        "y": 500,
+                        "rotate": 0
+                    },
+                    {
+                        "x": 575,
+                        "y": 0,
+                        "rotate": 0
+                    }
+                ]
+            }, {
+                "ImageId": 4,
+                "StartRotate": 270,
+                "Rotation": 10,
+                "Blinker": 1,
+                "BlinkerPosition": -10,
+                "Path": [{
+                        "x": 700,
+                        "y": 500,
+                        "rotate": 0
+                    },
+                    {
+                        "x": 700,
+                        "y": 275,
+                        "rotate": 45
+                    },
+                    {
+                        "x": 900,
+                        "y": 275,
+                        "rotate": 55
+                    },
+                    {
+                        "x": 900,
+                        "y": 275,
+                        "rotate": -20
+                    },
+                    {
+                        "x": 1200,
+                        "y": 275,
+                        "rotate": 0
+                    }
+                ]
+            }]
         }, {
             "Id": 12,
             "Name": "Krizovatka c.12",
