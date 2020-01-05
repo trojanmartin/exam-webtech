@@ -321,37 +321,45 @@
                     "Path": [{
                             "x": 650,
                             "y": 450,
-                            "rotate": 0
+                            "rotate": 45
                         },
                         {
                             "x": 650,
                             "y": 350,
-                            "rotate": 45
+                            "rotate": 60
                         },
                         {
-                            "x": 1500,
+                            "x": 900,
                             "y": 350,
-                            "rotate": -45
+                            "rotate": -20
+                        },
+                        {
+                            "x": 1100,
+                            "y": 350,
+                            "rotate": 0
                         }
                     ]
                 },
                 {
                     "ImageId": 4,
                     "StartRotate": 90,
-                    "Rotation": -5,
+                    "Rotation": 7,
                     "Blinker": -1,
                     "BlinkerPosition": 10,
                     "Path": [{
                             "x": 530,
-                            "y": 120
+                            "y": 120,
+                            "rotate": -90
                         },
                         {
                             "x": 530,
-                            "y": 350
+                            "y": 350,
+                            "rotate": 0
                         },
                         {
                             "x": 1100,
-                            "y": 350
+                            "y": 350,
+                            "rotate": 0
                         }
                     ]
                 }
