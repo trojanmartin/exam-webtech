@@ -27,7 +27,7 @@ body {
     overflow: visible;
 }
 
-.list-group {
+.scrollable {
     max-height: 90vh;
     margin-bottom: 10px;
     overflow: scroll;
