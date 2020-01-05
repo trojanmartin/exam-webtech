@@ -1087,8 +1087,116 @@
             "Name": "Krizovatka c.14",
             "Background": "assets/crossroads/14.png",
             "Explanation": "Zelené s modrým autom majú prednosť, pretože sú na hlavnej ceste. Potom zvyšok. Správna odpoveď /1.zelené/modré, 2.obe električky/",
-            "RightOrder": [6, 2, 3],
-            "Cars": []
+            "RightOrder": [
+                [2, 1, 7, 8],
+                [2, 1, 8, 7],
+                [1, 2, 7, 8],
+                [1, 2, 8, 7]
+            ],
+            "Cars": [{
+                "ImageId": 2,
+                "StartRotate": 0,
+                "Rotation": -5,
+                "Blinker": 1,
+                "BlinkerPosition": -10,
+                "Path": [{
+                        "x": 380,
+                        "y": 350,
+                        "rotate": 0
+                    },
+                    {
+                        "x": 470,
+                        "y": 350,
+                        "rotate": -30
+                    },
+                    {
+                        "x": 470,
+                        "y": 400,
+                        "rotate": -80
+                    },
+                    {
+                        "x": 470,
+                        "y": 450,
+                        "rotate": 20
+                    },
+                    {
+                        "x": 470,
+                        "y": 600,
+                        "rotate": 0
+                    }
+                ]
+            }, {
+                "ImageId": 1,
+                "StartRotate": 270,
+                "Rotation": -5,
+                "Blinker": -1,
+                "BlinkerPosition": 10,
+                "Path": [{
+                        "x": 650,
+                        "y": 475,
+                        "rotate": 0
+                    },
+                    {
+                        "x": 650,
+                        "y": 80,
+                        "rotate": 0
+                    },
+                    {
+                        "x": 550,
+                        "y": 80,
+                        "rotate": 35
+                    },
+                    {
+                        "x": 450,
+                        "y": 80,
+                        "rotate": 60
+                    },
+                    {
+                        "x": 400,
+                        "y": 80,
+                        "rotate": -5
+                    },
+                    {
+                        "x": 0,
+                        "y": 80,
+                        "rotate": 0
+                    }
+                ]
+            }, {
+                "ImageId": 7,
+                "StartRotate": 0,
+                "Rotation": -5,
+                "Blinker": 0,
+                "BlinkerPosition": 10,
+                "Path": [{
+                        "x": 300,
+                        "y": 250,
+                        "rotate": 0
+                    },
+                    {
+                        "x": 1200,
+                        "y": 250,
+                        "rotate": 0
+                    }
+                ]
+            }, {
+                "ImageId": 8,
+                "StartRotate": 180,
+                "Rotation": -5,
+                "Blinker": 0,
+                "BlinkerPosition": 10,
+                "Path": [{
+                        "x": 800,
+                        "y": 160,
+                        "rotate": 0
+                    },
+                    {
+                        "x": -100,
+                        "y": 160,
+                        "rotate": 0
+                    }
+                ]
+            }]
         }, {
             "Id": 15,
             "Name": "Krizovatka c.15",
