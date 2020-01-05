@@ -1002,8 +1002,86 @@
             "Name": "Krizovatka c.13",
             "Background": "assets/crossroads/13.png",
             "Explanation": "Červené auto má prednosť pred zeleným (pravidlo pravej ruky). Žlté auto dáva prednosť pred zeleným, pretože zelené auto ide rovno. Správna odpoveď /1.červené, 2.zelené, 3.žlté/",
-            "RightOrder": [6, 2, 3],
-            "Cars": []
+            "RightOrder": [2, 6, 4],
+            "Cars": [{
+                    "ImageId": 4,
+                    "StartRotate": 0,
+                    "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 470,
+                            "y": 350,
+                            "rotate": 0
+                        },
+                        {
+                            "x": 725,
+                            "y": 350,
+                            "rotate": 40
+                        },
+                        {
+                            "x": 725,
+                            "y": 250,
+                            "rotate": 70
+                        },
+                        {
+                            "x": 725,
+                            "y": 200,
+                            "rotate": -20
+                        },
+                        {
+                            "x": 725,
+                            "y": 0,
+                            "rotate": 0
+                        }
+                    ]
+                }, {
+                    "ImageId": 2,
+                    "StartRotate": 90,
+                    "Rotation": -5,
+                    "Blinker": 0,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 600,
+                            "y": 65,
+                            "rotate": 0
+                        },
+                        {
+                            "x": 600,
+                            "y": 1000,
+                            "rotate": 0
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 6,
+                    "StartRotate": -90,
+                    "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 725,
+                            "y": 525,
+                            "rotate": 35
+                        },
+                        {
+                            "x": 725,
+                            "y": 250,
+                            "rotate": 80
+                        },
+                        {
+                            "x": 650,
+                            "y": 250,
+                            "rotate": -30
+                        },
+                        {
+                            "x": 0,
+                            "y": 250,
+                            "rotate": 0
+                        }
+                    ]
+                }
+            ]
         }, {
             "Id": 14,
             "Name": "Krizovatka c.14",
