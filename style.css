@@ -23,6 +23,13 @@ body {
     margin-top: 1%;
 }
 
-#overflowBody {
+.overflow {
     overflow: visible;
+}
+
+.list-group {
+    max-height: 90vh;
+    margin-bottom: 10px;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }

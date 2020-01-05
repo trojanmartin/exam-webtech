@@ -29,6 +29,8 @@ function prepareOnLoad() {
     $.getJSON("Data/crossroads.json", function(json) {
         prepareList(json);
     });
+
+    showTutorial();
 }
 
 function loadDemo(id) {
