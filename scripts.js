@@ -465,7 +465,7 @@ function showTutorial() {
     jQuery.get('assets/info.txt', function(data) {
         tutorialMessage = data;
         if (localStorage.getItem("hasVisited") == undefined || localStorage.getItem("hasVisited") == "false") {
-            showInfoModal(tutorialMessage, "Zatvoriť");
+            showInfoModal(tutorialMessage, "OK");
             localStorage.setItem("hasVisited", "true");
         }
     });
