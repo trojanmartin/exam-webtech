@@ -14,11 +14,7 @@ const crossListClass = "list-group-item  list-group-item-action clearfix d-flex 
 const crossListBtn = "far fa-play-circle fa-lg hover";
 const badOrderText = "Nesprávne poradie. Skúste to ešte raz.";
 const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne.";
-var tutorialMessage;
 
-jQuery.get('/assets/info.txt', function(data) {
-    tutorialMessage = data;
-});
 
 
 var demoHandler = function() {}
@@ -417,9 +413,13 @@ function resetTutorial() {
 }
 
 function showTutorial() {
+    jQuery.get('/assets/info.txt', function(data) {
+        tutorialMessage = data;
+        if (localStorage.getItem("hasVisited") == undefined || localStorage.getItem("hasVisited") == "false") {
+            showInfoModal(tutorialMessage, "Zatvoriť");
+            localStorage.setItem("hasVisited", "true");
+        }
+    });
 
-    if (localStorage.getItem("hasVisited") == undefined || localStorage.getItem("hasVisited") == "false") {
-        showInfoModal(tutorialMessage, "Zatvoriť");
-        localStorage.setItem("hasVisited", "true");
-    }
+
 }
