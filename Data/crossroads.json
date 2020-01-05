@@ -566,18 +566,18 @@
             "Cars": [{
                     "ImageId": 2,
                     "StartRotate": -90,
-                    "Rotation": -2,
+                    "Rotation": -5,
                     "Blinker": 1,
                     "BlinkerPosition": -10,
                     "Path": [{
                             "x": 630,
                             "y": 490,
-                            "rotate": -45
+                            "rotate": -90
                         },
                         {
-                            "x": 700,
+                            "x": 750,
                             "y": 370,
-                            "rotate": 75
+                            "rotate": 45
                         },
                         {
                             "x": 800,
@@ -612,22 +612,22 @@
                         {
                             "x": 900,
                             "y": 50,
-                            "rotate": -180
+                            "rotate": -100
                         },
                         {
                             "x": 850,
                             "y": 30,
-                            "rotate": -180
+                            "rotate": -100
                         },
                         {
                             "x": 600,
                             "y": 20,
-                            "rotate": -300
+                            "rotate": -200
                         },
                         {
                             "x": 600,
                             "y": -100,
-                            "rotate": -300
+                            "rotate": -200
                         }
                     ]
                 },
