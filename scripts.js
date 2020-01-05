@@ -4,6 +4,7 @@ var stageHeight = 1000;
 const VIRTUAL_WIDTH = 1050;
 
 var lastCrossroad;
+let animationInProgres;
 
 
 
@@ -139,8 +140,8 @@ function createCrossRoad(cars, crossroad, containerId) {
                 var path = new Konva.Path({
                     x: 0,
                     y: 0,
-                    // visible: false
-                    stroke: 'cyan'
+                    visible: false
+                        //stroke: 'cyan'
                 });
 
                 // Load the path points up using M = moveto, L = lineto.
@@ -197,6 +198,7 @@ function createCrossRoad(cars, crossroad, containerId) {
                     if (pos == steps) {
                         animations[key].stop();
                         carGroup.destroy();
+                        animationInProgres = false;
                     }
 
 
@@ -305,20 +307,27 @@ function GetCarFromId(json, id) {
 
 function HandleMove(sender, rightOrderQueue, animations, stage) {
 
-    var response = checkRightOrder(sender.attrs.id, rightOrderQueue);
+    if (!animationInProgres) {
+        var response = checkRightOrder(sender.attrs.id, rightOrderQueue);
 
-    if (response.succes) {
-        sender.moveToTop();
-        animations[sender.attrs.id].start();
-        if (response.done) {
-            showInfoModal(succesMessage, "Pokračovať na ďalšiu križovatku", `loadCrossroad(${lastCrossroad + 1 }, "${mainCanvas}")`);
+        if (response.succes) {
+            sender.moveToTop();
+
+
+            animations[sender.attrs.id].start();
+            animationInProgres = true;
+
+            if (response.done) {
+                showInfoModal(succesMessage, "Pokračovať na ďalšiu križovatku", `loadCrossroad(${lastCrossroad + 1 }, "${mainCanvas}")`);
+            }
+
+        } else {
+            stage.destroy();
+            showInfoModal(badOrderText, "Ok");
+            loadCrossroad(lastCrossroad, mainCanvas);
         }
-
-    } else {
-        stage.destroy();
-        showInfoModal(badOrderText, "Ok");
-        loadCrossroad(lastCrossroad, mainCanvas);
     }
+
 }
 
 function runDemo(rightOrderQueue, animations) {
