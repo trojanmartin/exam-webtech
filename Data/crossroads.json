@@ -448,7 +448,7 @@
             "Background": "assets/crossroads/8.png",
             "Explanation": "Červené auto má prednosť pred sivým (pravidlo pravej ruky).. potom si už ide každý tak, ako chce. Správna odpoveď /1.červené, 2.sivé, 3.električka/zelené/modré /",
             "RightOrder": [
-                [4, 3, 7, 2, 1],
+                [4, 3, 7, 1, 1],
                 [4, 3, 7, 1, 2],
                 [4, 3, 1, 2, 7],
                 [4, 3, 1, 7, 2],
@@ -575,7 +575,7 @@
                             "rotate": -45
                         },
                         {
-                            "x": 750,
+                            "x": 700,
                             "y": 370,
                             "rotate": 75
                         },
@@ -705,8 +705,8 @@
             "Id": 10,
             "Name": "Krizovatka c.10",
             "Background": "assets/crossroads/10.png",
-            "Explanation": "Červené je na hlavnej ceste a ide rovno .. takže má prednosť. Potom zelené má prednosť pred žltým, pretože odbáča z hlavnej cesty. Správna odpoveď /1.červené, 2.zelené, 3.žlté/",
-            "RightOrder": [4, 2, 6],
+            "Explanation": "Sivé je na hlavnej ceste a ide rovno .. takže má prednosť. Potom zelené má prednosť pred žltým, pretože odbáča z hlavnej cesty. Správna odpoveď /1.červené, 2.zelené, 3.žlté/",
+            "RightOrder": [3, 2, 6],
             "Cars": [{
                     "ImageId": 6,
                     "StartRotate": -140,
@@ -754,7 +754,7 @@
                     ]
                 },
                 {
-                    "ImageId": 4,
+                    "ImageId": 3,
                     "StartRotate": 0,
                     "Rotation": 0,
                     "Blinker": 0,
