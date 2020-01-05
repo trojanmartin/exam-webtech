@@ -991,7 +991,7 @@
                     "BlinkerPosition": 10,
                     "Path": [{
                             "x": 500,
-                            "y": 0,
+                            "y": 80,
                             "rotate": 0
                         },
                         {
@@ -1007,7 +1007,7 @@
             "Name": "Krizovatka c.13",
             "Background": "assets/crossroads/13.png",
             "Explanation": "Červené auto má prednosť pred zeleným (pravidlo pravej ruky). Žlté auto dáva prednosť pred zeleným, pretože zelené auto ide rovno. Správna odpoveď /1.červené, 2.zelené, 3.žlté/",
-            "RightOrder": [2, 6, 4],
+            "RightOrder": [4, 2, 6],
             "Cars": [{
                     "ImageId": 4,
                     "StartRotate": 0,
