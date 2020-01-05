@@ -33,6 +33,11 @@
             "Color": "Trolley",
             "Id": 7,
             "Path": "assets/cars/trolley.png"
+        },
+        {
+            "Color": "Trolley",
+            "Id": 8,
+            "Path": "assets/cars/trolley.png"
         }
     ],
 
@@ -848,8 +853,150 @@
             "Name": "Krizovatka c.12",
             "Background": "assets/crossroads/12.png",
             "Explanation": "Červené auto má prednosť, pretože má zelenú jeho smerom. Potom ide všetko ostatné. Správna odpoveď /1.červené, 2.zvyšok/",
-            "RightOrder": [6, 2, 3],
-            "Cars": []
+            "RightOrder": [
+                [4, 2, 1, 7, 8],
+                [4, 2, 1, 8, 7],
+                [4, 2, 8, 7, 1],
+                [4, 2, 8, 1, 7],
+                [4, 2, 7, 1, 8],
+                [4, 2, 7, 8, 1],
+                [4, 1, 2, 8, 7],
+                [4, 1, 2, 7, 8],
+                [4, 1, 7, 2, 8],
+                [4, 1, 7, 8, 2],
+                [4, 1, 8, 7, 2],
+                [4, 1, 8, 2, 7],
+                [4, 7, 8, 2, 1],
+                [4, 7, 8, 1, 2],
+                [4, 7, 2, 1, 8],
+                [4, 7, 2, 8, 1],
+                [4, 7, 1, 2, 8],
+                [4, 7, 1, 8, 2],
+                [4, 8, 1, 2, 7],
+                [4, 8, 1, 7, 2],
+                [4, 8, 2, 1, 7],
+                [4, 8, 2, 7, 1],
+                [4, 8, 7, 2, 1],
+                [4, 8, 7, 1, 2]
+            ],
+            "Cars": [{
+                    "ImageId": 2,
+                    "StartRotate": 90,
+                    "Rotation": -5,
+                    "Blinker": 0,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 350,
+                            "y": 100,
+                            "rotate": 0
+                        },
+                        {
+                            "x": 350,
+                            "y": 250,
+                            "rotate": -35
+                        },
+                        {
+                            "x": 250,
+                            "y": 250,
+                            "rotate": -75
+                        },
+                        {
+                            "x": 200,
+                            "y": 250,
+                            "rotate": 20
+                        },
+                        {
+                            "x": 0,
+                            "y": 250,
+                            "rotate": 0
+                        }
+                    ]
+                }, {
+                    "ImageId": 1,
+                    "StartRotate": -90,
+                    "Rotation": -5,
+                    "Blinker": 0,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 675,
+                            "y": 500,
+                            "rotate": 0
+                        },
+                        {
+                            "x": 675,
+                            "y": 0,
+                            "rotate": 0
+                        }
+                    ]
+                }, {
+                    "ImageId": 4,
+                    "StartRotate": 270,
+                    "Rotation": -5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 825,
+                            "y": 500,
+                            "rotate": 0
+                        },
+                        {
+                            "x": 825,
+                            "y": 250,
+                            "rotate": 45
+                        },
+                        {
+                            "x": 750,
+                            "y": 250,
+                            "rotate": 65
+                        },
+                        {
+                            "x": 600,
+                            "y": 250,
+                            "rotate": -20
+                        },
+                        {
+                            "x": 0,
+                            "y": 250,
+                            "rotate": 0
+                        }
+                    ]
+                }, {
+                    "ImageId": 7,
+                    "StartRotate": 270,
+                    "Rotation": 0,
+                    "Blinker": 0,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 570,
+                            "y": 500,
+                            "rotate": 0
+                        },
+                        {
+                            "x": 570,
+                            "y": 0,
+                            "rotate": 0
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 8,
+                    "StartRotate": 90,
+                    "Rotation": 0,
+                    "Blinker": 0,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 500,
+                            "y": 0,
+                            "rotate": 0
+                        },
+                        {
+                            "x": 500,
+                            "y": 1000,
+                            "rotate": 0
+                        }
+                    ]
+                }
+            ]
         }, {
             "Id": 13,
             "Name": "Krizovatka c.13",
