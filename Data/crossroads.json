@@ -38,6 +38,11 @@
             "Color": "Trolley",
             "Id": 8,
             "Path": "assets/cars/trolley.png"
+        },
+        {
+            "Color": "Cycle",
+            "Id": 9,
+            "Path": "assets/cars/cycle.png"
         }
     ],
 
@@ -1202,8 +1207,97 @@
             "Name": "Krizovatka c.15",
             "Background": "assets/crossroads/15.png",
             "Explanation": "TODO",
-            "RightOrder": [6, 2, 3],
-            "Cars": []
+            "RightOrder": [
+                [4, 2, 1, 9],
+                [4, 2, 9, 1],
+                [2, 4, 1, 9],
+                [2, 4, 9, 1]
+
+            ],
+            "Cars": [{
+                "ImageId": 4,
+                "StartRotate": 0,
+                "Rotation": -5,
+                "Blinker": 1,
+                "BlinkerPosition": -10,
+                "Path": [{
+                        "x": 380,
+                        "y": 280,
+                        "rotate": 0
+                    },
+                    {
+                        "x": 530,
+                        "y": 280,
+                        "rotate": -30
+                    },
+                    {
+                        "x": 530,
+                        "y": 450,
+                        "rotate": -80
+                    },
+                    {
+                        "x": 530,
+                        "y": 500,
+                        "rotate": 20
+                    },
+                    {
+                        "x": 530,
+                        "y": 600,
+                        "rotate": 0
+                    }
+                ]
+            }, {
+                "ImageId": 2,
+                "StartRotate": 270,
+                "Rotation": -5,
+                "Blinker": 0,
+                "BlinkerPosition": 10,
+                "Path": [{
+                        "x": 650,
+                        "y": 400,
+                        "rotate": 0
+                    },
+                    {
+                        "x": 650,
+                        "y": 0,
+                        "rotate": 0
+                    }
+                ]
+            }, {
+                "ImageId": 1,
+                "StartRotate": 180,
+                "Rotation": -5,
+                "Blinker": 0,
+                "BlinkerPosition": 10,
+                "Path": [{
+                        "x": 850,
+                        "y": 180,
+                        "rotate": 0
+                    },
+                    {
+                        "x": -100,
+                        "y": 180,
+                        "rotate": 0
+                    }
+                ]
+            }, {
+                "ImageId": 9,
+                "StartRotate": 360,
+                "Rotation": -5,
+                "Blinker": 0,
+                "BlinkerPosition": 10,
+                "Path": [{
+                        "x": 850,
+                        "y": 100,
+                        "rotate": 0
+                    },
+                    {
+                        "x": -100,
+                        "y": 100,
+                        "rotate": 0
+                    }
+                ]
+            }]
         }
     ]
 }

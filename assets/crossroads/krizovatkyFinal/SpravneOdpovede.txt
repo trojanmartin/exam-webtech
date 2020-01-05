@@ -14,3 +14,4 @@ Krizovatka11ex - 1.zelene, 2. cervene, 3 modre (smerovky --> cervena doprava, zv
 Krizovatka12ex - 1.cervene, 2.vsetko ostatne (smerovky --> cervena dolava, zelena dolava, zvysok rovno)
 Krizovatka13ex - 1. cervene, 2.zelene, 3.zlte (smerovky --> cervene dolava(dohora), zlte dolava)
 Krizovatka14ex - 1. zelene/modre , 2. obe elektricky (smerovky --> zelene auto doprava(dodola))
+Krizovatka15ex - 1.zelene/cervene, 2.modre/bicykel (smerovky --> cervene doprava, zvysok rovno)
