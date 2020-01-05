@@ -138,14 +138,3 @@ $(function() {
         }, 2500);
     });
 });
-
-
-
-function q() {
-    if (localStorage.getItem("hasVisited") == undefined) {
-        alert("a");
-        localStorage.setItem("hasVisited", "true");
-    }
-}
-
-q();

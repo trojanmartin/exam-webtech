@@ -14,7 +14,10 @@ const crossListClass = "list-group-item  list-group-item-action clearfix d-flex 
 const crossListBtn = "far fa-play-circle fa-lg hover";
 const badOrderText = "Nesprávne poradie. Skúste to ešte raz.";
 const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne.";
-const tutorialMessage = "tu nieco vymysli jakub";
+jQuery.get('/assets/info.txt', function(data) {
+    tutorialMessage = data;
+});
+
 
 var demoHandler = function() {}
 
@@ -31,7 +34,7 @@ function loadDemo(id) {
 }
 
 function loadCrossroad(id, containerId) {
-    showTutorial();
+
     $.getJSON("Data/crossroads.json", function(json) {
         lastCrossroad = id;
         prepareSources(json, id, containerId);
@@ -403,7 +406,7 @@ $(document).on('shown.bs.modal', '#demoModal', function(e) {
     // loadCrossroad(e.relatedTarget.id, demoCanvas)
 });
 
-
+showTutorial();
 
 function resetTutorial() {
     localStorage.setItem("hasVisited", "false");
