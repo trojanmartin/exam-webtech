@@ -23,7 +23,7 @@ var explanationHandler = function() {}
 
 
 function prepareOnLoad() {
-    showTutorial();
+
     $.getJSON("Data/crossroads.json", function(json) {
         prepareList(json);
     });
@@ -341,14 +341,27 @@ function checkRightOrder(id, orderQueue) {
 
     ret.succes = false;
 
-    for (let i = 0; i < orderQueue.length; i++) {
-        if (id == orderQueue[i].shift()) {
-            ret.succes = true;
-            ret.done = (orderQueue[i].length == 0);
-            return ret
+    if (orderQueue[0].constructor === Array) {
+        for (let i = 0; i < orderQueue.length; i++) {
+            var order = orderQueue[i];
+            if (id == order.shift()) {
+                ret.succes = true;
+                ret.done = (order.length == 0);
+                return ret
+            }
         }
+        return ret;
     }
+
+    var validId = orderQueue.shift();
+
+    if (validId == id) {
+        ret.succes = true;
+        ret.done = orderQueue.length == 0;
+    }
+
     return ret;
+
 }
 
 function fitStageIntoParentContainer(stage, containerId) {
