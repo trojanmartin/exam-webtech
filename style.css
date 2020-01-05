@@ -23,6 +23,15 @@ body {
     margin-top: 1%;
 }
 
+#meninyBody {
+    height: 100vh;
+}
+
+#counterVisitor {
+    top: 96%;
+    position: absolute;
+}
+
 .overflow {
     overflow: visible;
 }
