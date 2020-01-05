@@ -347,18 +347,25 @@ function runDemo(rightOrderQueue, animations) {
 function checkRightOrder(id, orderQueue) {
 
     var ret = {};
-
+    let a = 0;
+    let length = orderQueue.length;
     ret.succes = false;
 
     if (orderQueue[0].constructor === Array) {
-        for (let i = 0; i < orderQueue.length; i++) {
-            var order = orderQueue[i];
+        for (let i = 0; i < length; i++) {
+            var order = orderQueue[a];
             if (id == order[0]) {
                 ret.succes = true;
-                ret.done = (order.length == 0);
+
                 order.shift();
+                a++
+
+                ret.done = (order.length == 0);
+
+                if (ret.done)
+                    return ret;
             } else {
-                orderQueue[i].shift();
+                orderQueue.splice(a, 1);
             }
         }
         return ret;
@@ -443,7 +450,7 @@ function prepareList(json) {
 }
 
 $(document).on('shown.bs.modal', '#demoModal', function(e) {
-    loadDemo(e.relatedTarget.id);
+    loadDemo(Number(e.relatedTarget.id));
     // loadCrossroad(e.relatedTarget.id, demoCanvas)
 });
 
@@ -455,10 +462,10 @@ function resetTutorial() {
 }
 
 function showTutorial() {
-    jQuery.get('/assets/info.txt', function(data) {
+    jQuery.get('assets/info.txt', function(data) {
         tutorialMessage = data;
         if (localStorage.getItem("hasVisited") == undefined || localStorage.getItem("hasVisited") == "false") {
-            showInfoModal(tutorialMessage, "Zatvoriť");
+            showInfoModal(tutorialMessage, "OK");
             localStorage.setItem("hasVisited", "true");
         }
     });
