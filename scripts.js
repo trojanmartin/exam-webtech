@@ -324,7 +324,7 @@ function HandleMove(sender, rightOrderQueue, animations, stage) {
 function runDemo(rightOrderQueue, animations) {
 
     let firstOrder
-    if (orderQueue[0].constructor === Array) {
+    if (rightOrderQueue[0].constructor === Array) {
         firstOrder = rightOrderQueue[0];
     } else {
         firstOrder = rightOrderQueue;
@@ -353,10 +353,10 @@ function checkRightOrder(id, orderQueue) {
     if (orderQueue[0].constructor === Array) {
         for (let i = 0; i < orderQueue.length; i++) {
             var order = orderQueue[i];
-            if (id == order.shift()) {
+            if (id == order[0]) {
                 ret.succes = true;
                 ret.done = (order.length == 0);
-                return ret
+                order.shift();
             } else {
                 orderQueue[i].shift();
             }
