@@ -18,6 +18,8 @@ const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správn
 
 
 var demoHandler = function() {}
+var explanationHandler = function() {}
+
 
 
 function prepareOnLoad() {
@@ -102,7 +104,7 @@ function prepareSources(json, crossId, containerId) {
 
 
     crossroad.RightOrder = selectedCrossroad.RightOrder;
-
+    crossroad.explanation = selectedCrossroad.Explanation;
     crossroad.image = new Image();
     crossroad.image.onload = function() {
         if (++loadedImages >= numImages) {
@@ -262,6 +264,10 @@ function createCrossRoad(cars, crossroad, containerId) {
                     demoHandler = function() {
                         runDemo(rightOrderQueue, animations);
                     }
+
+                    explanationHandler = function() {
+                        showInfoModal(crossroad.explanation, "Ok");
+                    }
                 }
 
 
@@ -299,10 +305,13 @@ function GetCarFromId(json, id) {
 }
 
 function HandleMove(sender, rightOrderQueue, animations, stage) {
-    if (CheckRightOrder(sender.attrs.id, rightOrderQueue)) {
+
+    var response = checkRightOrder(sender.attrs.id, rightOrderQueue);
+
+    if (response.succes) {
         sender.moveToTop();
         animations[sender.attrs.id].start();
-        if (rightOrderQueue.length == 0) {
+        if (response.done) {
             showInfoModal(succesMessage, "Pokračovať na ďalšiu križovatku", `loadCrossroad(${lastCrossroad + 1 }, "${mainCanvas}")`);
         }
 
@@ -327,14 +336,21 @@ function runDemo(rightOrderQueue, animations) {
 
 }
 
-function CheckRightOrder(id, orderQueue) {
 
-    var validId = orderQueue.shift();
+function checkRightOrder(id, orderQueue) {
 
-    if (validId == id)
-        return true;
+    var ret = {};
 
-    return false;
+    ret.succes = false;
+
+    for (let i = 0; i < orderQueue.length; i++) {
+        if (id == orderQueue[i].shift()) {
+            ret.succes = true;
+            ret.done = (orderQueue[i].length == 0);
+            return ret
+        }
+    }
+    return ret;
 }
 
 function fitStageIntoParentContainer(stage, containerId) {

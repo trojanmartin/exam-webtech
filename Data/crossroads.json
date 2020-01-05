@@ -91,9 +91,9 @@
             "Name": "Krizovatka c.2",
             "Background": "assets/crossroads/2.png",
             "Explanation": "Zelené auto je na hlavnej ceste, takže má prednosť. Správna odpoveď /1.zelené, 2.modré/",
-            "RightOrder": [3, 6],
+            "RightOrder": [2, 1],
             "Cars": [{
-                    "ImageId": 6,
+                    "ImageId": 1,
                     "StartRotate": 90,
                     "Rotation": 5,
                     "Blinker": -1,
@@ -127,7 +127,7 @@
                     ]
                 },
                 {
-                    "ImageId": 3,
+                    "ImageId": 2,
                     "StartRotate": -90,
                     "Rotation": 5,
                     "Blinker": 0,
@@ -195,7 +195,10 @@
             "Name": "Krizovatka c.4",
             "Background": "assets/crossroads/4.png",
             "Explanation": "Červené a modré auto sú na hlavnej ceste takže majú prednosť. Správna odpoveď /1.červené/modré, 2.zelené/",
-            "RightOrder": [4, 1, 2],
+            "RightOrder": [
+                [4, 1, 2],
+                [1, 4, 2]
+            ],
             "Cars": [{
                     "ImageId": 2,
                     "StartRotate": 0,
