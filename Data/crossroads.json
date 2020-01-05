@@ -41,60 +41,22 @@
             "Name": "Krizovatka c.1",
             "Background": "assets/crossroads/1.png",
             "Explanation": "Prvé odbáča žlté auto, pretože zákruta, do ktorej odbáča, je po jeho pravici a preto má prednosť pred zeleným autom. Sivé dáva prednost zelenému (pravidlo pravej ruky). Správne poradie /1.žlté, 2.zelené, 3.sivé",
-            "RightOrder": [6, 2, 3],
+            "RightOrder": [6, 3],
             "Cars": [{
                     "ImageId": 6,
                     "StartRotate": 0,
                     "Rotation": 5,
-                    "Blinker": 1,
+                    "Blinker": 0,
                     "BlinkerPosition": -10,
                     "Path": [{
                             "x": 350,
                             "y": 250,
-                            "rotate": 45
+                            "rotate": 0
 
                         },
                         {
-                            "x": 530,
+                            "x": 1500,
                             "y": 250,
-                            "rotate": 45
-                        },
-                        {
-                            "x": 530,
-                            "y": 250,
-                            "rotate": 0
-                        },
-                        {
-                            "x": 530,
-                            "y": 450,
-                            "rotate": 0
-                        },
-                        {
-                            "x": 530,
-                            "y": 750,
-                            "rotate": 0
-                        }
-                    ]
-                },
-                {
-                    "ImageId": 2,
-                    "StartRotate": 180,
-                    "Rotation": -5,
-                    "Blinker": -1,
-                    "BlinkerPosition": 10,
-                    "Path": [{
-                            "x": 800,
-                            "y": 120,
-                            "rotate": 45
-                        },
-                        {
-                            "x": 500,
-                            "y": 120,
-                            "rotate": 45
-                        },
-                        {
-                            "x": 500,
-                            "y": 750,
                             "rotate": 0
                         }
                     ]
@@ -102,22 +64,22 @@
                 {
                     "ImageId": 3,
                     "StartRotate": -90,
-                    "Rotation": -5,
-                    "Blinker": -1,
-                    "BlinkerPosition": 10,
+                    "Rotation": 5,
+                    "Blinker": 1,
+                    "BlinkerPosition": -10,
                     "Path": [{
                             "x": 650,
                             "y": 400,
-                            "rotate": 25
+                            "rotate": 45
                         },
                         {
                             "x": 650,
-                            "y": 120,
-                            "rotate": 65
+                            "y": 250,
+                            "rotate": 45
                         },
                         {
-                            "x": 0,
-                            "y": 120,
+                            "x": 1500,
+                            "y": 250,
                             "rotate": 0
                         }
                     ]
@@ -129,72 +91,56 @@
             "Name": "Krizovatka c.2",
             "Background": "assets/crossroads/2.png",
             "Explanation": "Zelené auto je na hlavnej ceste, takže má prednosť. Správna odpoveď /1.zelené, 2.modré/",
-            "RightOrder": [6, 3, 2],
+            "RightOrder": [3, 6],
             "Cars": [{
                     "ImageId": 6,
-                    "StartRotate": 0,
+                    "StartRotate": 90,
                     "Rotation": 5,
                     "Blinker": -1,
                     "BlinkerPosition": 10,
                     "Path": [{
-                            "x": 350,
-                            "y": 250
+                            "x": 530,
+                            "y": 100,
+                            "rotate": -45
+
                         },
                         {
                             "x": 530,
-                            "y": 250
+                            "y": 250,
+                            "rotate": -45
                         },
                         {
-                            "x": 530,
-                            "y": 250
+                            "x": 560,
+                            "y": 270,
+                            "rotate": 0
                         },
                         {
-                            "x": 530,
-                            "y": 450
+                            "x": 650,
+                            "y": 350,
+                            "rotate": 0
                         },
                         {
-                            "x": 530,
-                            "y": 750
-                        }
-                    ]
-                },
-                {
-                    "ImageId": 2,
-                    "StartRotate": 180,
-                    "Rotation": -5,
-                    "Blinker": -1,
-                    "BlinkerPosition": 10,
-                    "Path": [{
-                            "x": 800,
-                            "y": 120
-                        },
-                        {
-                            "x": 500,
-                            "y": 120
-                        },
-                        {
-                            "x": 500,
-                            "y": 750
+                            "x": 1500,
+                            "y": 350,
+                            "rotate": 0
                         }
                     ]
                 },
                 {
                     "ImageId": 3,
                     "StartRotate": -90,
-                    "Rotation": -5,
-                    "Blinker": -1,
+                    "Rotation": 5,
+                    "Blinker": 0,
                     "BlinkerPosition": 10,
                     "Path": [{
                             "x": 650,
-                            "y": 400
+                            "y": 470,
+                            "rotate": 0
                         },
                         {
                             "x": 650,
-                            "y": 120
-                        },
-                        {
-                            "x": 0,
-                            "y": 120
+                            "y": 0,
+                            "rotate": 0
                         }
                     ]
                 }
@@ -205,73 +151,42 @@
             "Name": "Krizovatka c.3",
             "Background": "assets/crossroads/3.png",
             "Explanation": "Zelené auto je na hlavnej ceste, takže má prednosť. Mdoré auto stojí na STOP-ke. Správna odpoveď /1.zelené, 2.modré/",
-            "RightOrder": [6, 2, 3],
+            "RightOrder": [2, 1],
             "Cars": [{
-                    "ImageId": 6,
+                    "ImageId": 2,
                     "StartRotate": 0,
                     "Rotation": 5,
-                    "Blinker": -1,
+                    "Blinker": 0,
                     "BlinkerPosition": 10,
                     "Path": [{
                             "x": 350,
-                            "y": 250
+                            "y": 350,
+                            "rotate": 0
                         },
                         {
-                            "x": 530,
-                            "y": 250
-                        },
-                        {
-                            "x": 530,
-                            "y": 250
-                        },
-                        {
-                            "x": 530,
-                            "y": 450
-                        },
-                        {
-                            "x": 530,
-                            "y": 750
+                            "x": 1500,
+                            "y": 350,
+                            "rotate": 0
                         }
                     ]
                 },
                 {
-                    "ImageId": 2,
-                    "StartRotate": 180,
-                    "Rotation": -5,
-                    "Blinker": -1,
-                    "BlinkerPosition": 10,
-                    "Path": [{
-                            "x": 800,
-                            "y": 120
-                        },
-                        {
-                            "x": 500,
-                            "y": 120
-                        },
-                        {
-                            "x": 500,
-                            "y": 750
-                        }
-                    ]
-                },
-                {
-                    "ImageId": 3,
+                    "ImageId": 1,
                     "StartRotate": -90,
                     "Rotation": -5,
-                    "Blinker": -1,
+                    "Blinker": 0,
                     "BlinkerPosition": 10,
                     "Path": [{
-                            "x": 650,
-                            "y": 400
+                            "x": 660,
+                            "y": 470,
+                            "rotate": 0
                         },
                         {
-                            "x": 650,
-                            "y": 120
-                        },
-                        {
-                            "x": 0,
-                            "y": 120
+                            "x": 660,
+                            "y": 0,
+                            "rotate": 0
                         }
+
                     ]
                 }
             ]
@@ -280,8 +195,78 @@
             "Name": "Krizovatka c.4",
             "Background": "assets/crossroads/4.png",
             "Explanation": "Červené a modré auto sú na hlavnej ceste takže majú prednosť. Správna odpoveď /1.červené/modré, 2.zelené/",
-            "RightOrder": [6, 2, 3],
-            "Cars": []
+            "RightOrder": [4, 1, 2],
+            "Cars": [{
+                    "ImageId": 2,
+                    "StartRotate": 0,
+                    "Rotation": 5,
+                    "Blinker": 0,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 450,
+                            "y": 210,
+                            "rotate": 0
+                        },
+                        {
+                            "x": 1500,
+                            "y": 210,
+                            "rotate": 0
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 4,
+                    "StartRotate": -45,
+                    "Rotation": 5,
+                    "Blinker": 1,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 750,
+                            "y": 320,
+                            "rotate": 0
+                        },
+                        {
+                            "x": 900,
+                            "y": 200,
+                            "rotate": 45
+                        },
+                        {
+                            "x": 1500,
+                            "y": 200,
+                            "rotate": 0
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 1,
+                    "StartRotate": 180,
+                    "Rotation": 5,
+                    "Blinker": -1,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 950,
+                            "y": 80,
+                            "rotate": -45
+                        },
+                        {
+                            "x": 800,
+                            "y": 120,
+                            "rotate": -10
+                        },
+                        {
+                            "x": 700,
+                            "y": 200,
+                            "rotate": 0
+                        },
+                        {
+                            "x": 300,
+                            "y": 600,
+                            "rotate": 0
+                        }
+
+                    ]
+                }
+            ]
         }, {
             "Id": 5,
             "Name": "Krizovatka c.5",

@@ -27,6 +27,8 @@ function prepareOnLoad() {
     });
 
     showTutorial();
+
+    loadCrossroad(4, mainCanvas);
 }
 
 function loadDemo(id) {
