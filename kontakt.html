@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/konva@4.0.18/konva.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Kontakt</title>
+</head>
+
+<body id="overflowBody">
+    <!-- https://getbootstrap.com/docs/4.4/components/navbar/#toggler -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navTogle" aria-controls="navTogle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navTogle">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item ">
+                    <a class="nav-link" href="index.html">Križovatky</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="meniny.html">Meniny</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="kontakt.html">Kontakt</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- https://www.w3schools.com/bootstrap/bootstrap_tables.asp-->
+    <!--https://mdbootstrap.com/docs/jquery/forms/checkbox/-->
+    <div class="container" id="kontaktTable">
+        <h2>Kontakt na nás</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Meno a priezvisko</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Martin Trojan</td>
+                    <td>martin.trojan.372@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Patrik Smolár</td>
+                    <td>patosmolar@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Jakub Trstenský</td>
+                    <td>jakubtrstensky@gmail.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <h2>Checklist splnených úloh</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Meno a Priezvisko</th>
+                    <th>Úloha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox" id="checkboxKontakt">
+                            <input type="checkbox" checked class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked"></label>
+                        </div>
+                    </td>
+                    <td>Martin Trojan</td>
+                    <td>Infraštruktúra pre animáciu áut</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox" id="checkboxKontakt">
+                            <input type="checkbox" checked class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked"></label>
+                        </div>
+                    </td>
+                    <td>Martin Trojan</td>
+                    <td>Návrh JSON-u pre križovatky</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox" id="checkboxKontakt">
+                            <input type="checkbox" checked class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked"></label>
+                        </div>
+                    </td>
+                    <td>Martin Trojan</td>
+                    <td>Stránka Križovatky spravená responzívnou</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox" id="checkboxKontakt">
+                            <input type="checkbox" checked class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked"></label>
+                        </div>
+                    </td>
+                    <td>Patrik Smolár</td>
+                    <td>Stránka Meniny</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox" id="checkboxKontakt">
+                            <input type="checkbox" checked class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked"></label>
+                        </div>
+                    </td>
+                    <td>Patrik Smolár</td>
+                    <td>Grafické spracovanie áut</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox" id="checkboxKontakt">
+                            <input type="checkbox" checked class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked"></label>
+                        </div>
+                    </td>
+                    <td>Patrik Smolár</td>
+                    <td>Morálna podpora :)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox" id="checkboxKontakt">
+                            <input type="checkbox" checked class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked"></label>
+                        </div>
+                    </td>
+                    <td>Jakub Trstenský</td>
+                    <td>Grafický návrh križovatiek</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox" id="checkboxKontakt">
+                            <input type="checkbox" checked class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked"></label>
+                        </div>
+                    </td>
+                    <td>Jakub Trstenský</td>
+                    <td>Počítadlo na počet pozretí stránky</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox" id="checkboxKontakt">
+                            <input type="checkbox" checked class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked"></label>
+                        </div>
+                    </td>
+                    <td>Jakub Trstenský</td>
+                    <td>Vytvorenie stránky kontakt</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox" id="checkboxKontakt">
+                            <input type="checkbox" checked class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked"></label>
+                        </div>
+                    </td>
+                    <td>Všetci</td>
+                    <td>Naanimovanie 5ks križovatiek</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Start of CuterCounter Code -->
+    <div>Počet návštev:
+        <a href="https://www.webfreecounter.com/" target="_blank">
+            <img src="https://www.cutercounter.com/hits.php?id=hxdkdak&nd=1&style=3">
+        </a>
+    </div>
+    <!-- End of CuterCounter Code -->
+
+
+</body>
+
+</html>

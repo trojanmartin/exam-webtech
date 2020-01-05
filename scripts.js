@@ -5,6 +5,8 @@ const VIRTUAL_WIDTH = 1050;
 
 var lastCrossroad;
 
+
+
 const mainCanvas = 'road';
 const demoCanvas = 'demoRoad'
 
@@ -12,6 +14,7 @@ const crossListClass = "list-group-item  list-group-item-action clearfix d-flex 
 const crossListBtn = "far fa-play-circle fa-lg hover";
 const badOrderText = "Nesprávne poradie. Skúste to ešte raz.";
 const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne.";
+const tutorialMessage = "tu nieco vymysli jakub";
 
 var demoHandler = function() {}
 
@@ -28,7 +31,7 @@ function loadDemo(id) {
 }
 
 function loadCrossroad(id, containerId) {
-
+    showTutorial();
     $.getJSON("Data/crossroads.json", function(json) {
         lastCrossroad = id;
         prepareSources(json, id, containerId);
@@ -399,3 +402,17 @@ $(document).on('shown.bs.modal', '#demoModal', function(e) {
     loadDemo(e.relatedTarget.id);
     // loadCrossroad(e.relatedTarget.id, demoCanvas)
 });
+
+
+
+function resetTutorial() {
+    localStorage.setItem("hasVisited", "false");
+    showTutorial();
+}
+
+function showTutorial() {
+    if (localStorage.getItem("hasVisited") == undefined || localStorage.getItem("hasVisited") == "false") {
+        showInfoModal(tutorialMessage, "Zatvoriť");
+        localStorage.setItem("hasVisited", "true");
+    }
+}

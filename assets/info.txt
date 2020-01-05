@@ -1,0 +1,10 @@
+Vitajte na našej stránke.
+Tu je návod na používanie:
+Pre riešenie križovatiek v sekcií "Križovatky" stačí klikať na objekty (autá,električky). Pri správnom alebo nesprávnom riešení
+Vás bude stránka sama upozorňovať. Pre prepnutie na ľubovoľnú križovatku použite ľavú lištu. Prípadne sa môžete prepnúť na ďaľšiu
+križovatku správnym vyriešením danej križovatky.
+Pri každej križovatke je aj správne riešenie, či už formou animácie alebo textu.
+Pre zistenie mena alebo v akom dátume má kto meniny stačí napísať do riadku v sekcií "Meniny" Vami chcené meno 
+(pre zistenie kedy má daná osoba meniny) alebo dátum (kto má v tomto dátume meniny).
+V sekcií Kontakt je e-mail na autorov tejto stránky.
+Príjemné používanie.
