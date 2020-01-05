@@ -22,6 +22,7 @@ var explanationHandler = function() {}
 
 
 
+
 function prepareOnLoad() {
 
     $.getJSON("Data/crossroads.json", function(json) {
@@ -322,13 +323,16 @@ function HandleMove(sender, rightOrderQueue, animations, stage) {
 
 function runDemo(rightOrderQueue, animations) {
 
-    animations[rightOrderQueue[0]].start();
 
-    for (let i = 1; i < rightOrderQueue.length; i++) {
+    let firstOrder = rightOrderQueue[0];
+
+    animations[firstOrder[0]].start();
+
+    for (let i = 1; i < firstOrder.length; i++) {
         //code before the pause
         setTimeout(function() {
-            animations[rightOrderQueue[i]].start();
-        }, i * 1000);
+            animations[firstOrder[i]].start();
+        }, i * 1500);
 
     }
 
@@ -348,6 +352,8 @@ function checkRightOrder(id, orderQueue) {
                 ret.succes = true;
                 ret.done = (order.length == 0);
                 return ret
+            } else {
+                orderQueue[i].shift();
             }
         }
         return ret;

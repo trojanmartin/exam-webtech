@@ -41,7 +41,7 @@
             "Name": "Krizovatka c.1",
             "Background": "assets/crossroads/1.png",
             "Explanation": "Prvé odbáča žlté auto, pretože zákruta, do ktorej odbáča, je po jeho pravici a preto má prednosť pred zeleným autom. Sivé dáva prednost zelenému (pravidlo pravej ruky). Správne poradie /1.žlté, 2.zelené, 3.sivé",
-            "RightOrder": [6, 3],
+            "RightOrder": [3, 6],
             "Cars": [{
                     "ImageId": 6,
                     "StartRotate": 0,
