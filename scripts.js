@@ -450,7 +450,7 @@ function prepareList(json) {
 }
 
 $(document).on('shown.bs.modal', '#demoModal', function(e) {
-    loadDemo(e.relatedTarget.id);
+    loadDemo(Number(e.relatedTarget.id));
     // loadCrossroad(e.relatedTarget.id, demoCanvas)
 });
 
