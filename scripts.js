@@ -323,8 +323,13 @@ function HandleMove(sender, rightOrderQueue, animations, stage) {
 
 function runDemo(rightOrderQueue, animations) {
 
+    let firstOrder
+    if (orderQueue[0].constructor === Array) {
+        firstOrder = rightOrderQueue[0];
+    } else {
+        firstOrder = rightOrderQueue;
+    }
 
-    let firstOrder = rightOrderQueue[0];
 
     animations[firstOrder[0]].start();
 
