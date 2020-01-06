@@ -285,8 +285,78 @@
             "Name": "Krizovatka c.5",
             "Background": "assets/crossroads/5.png",
             "Explanation": "Sivé má prednosť pred modrým autom kvôli pravidlu pravej ruky. Potom má prednosť zelené auto taktiež kvôli tomu istému pravidlu. Správna odpoveď /1.sivé, 2.modré, 3.zelené, 4.červené",
-            "RightOrder": [6, 2, 3],
-            "Cars": []
+            "RightOrder": [3, 1, 2, 4],
+            "Cars": [{
+                    "ImageId": 3,
+                    "StartRotate": 0,
+                    "Rotation": 0,
+                    "Blinker": 0,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 390,
+                            "y": 350
+                        },
+                        {
+                            "x": 1500,
+                            "y": 350
+                        }
+                    ]
+                }, {
+                    "ImageId": 4,
+                    "StartRotate": 270,
+                    "Rotation": 0,
+                    "Blinker": 0,
+                    "BlinkerPosition": -10,
+                    "Path": [{
+                            "x": 650,
+                            "y": 450,
+                            "rotate": 45
+                        },
+                        {
+                            "x": 650,
+                            "y": -110,
+                            "rotate": 60
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 1,
+                    "StartRotate": 90,
+                    "Rotation": 0,
+                    "Blinker": 0,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 530,
+                            "y": 120,
+                            "rotate": -90
+                        },
+                        {
+                            "x": 530,
+                            "y": 1100,
+                            "rotate": 0
+                        }
+                    ]
+                },
+                {
+                    "ImageId": 2,
+                    "StartRotate": 180,
+                    "Rotation": -5,
+                    "Blinker": 0,
+                    "BlinkerPosition": 10,
+                    "Path": [{
+                            "x": 770,
+                            "y": 220,
+                            "rotate": 0
+                        },
+                        {
+                            "x": -100,
+                            "y": 220,
+                            "rotate": 0
+                        }
+
+                    ]
+                }
+            ]
         },
         {
             "Id": 6,
