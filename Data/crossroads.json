@@ -50,7 +50,7 @@
             "Id": 1,
             "Name": "Krizovatka c.1",
             "Background": "assets/crossroads/1.png",
-            "Explanation": "Sivé auto má prednosť pred prvým (pravidlo pravej ruky). Správna odpoveď /1.sivé, 2.žlté/",
+            "Explanation": "Sivé auto má prednosť pred žltým (pravidlo pravej ruky). Správna odpoveď /1.sivé, 2.žlté/",
             "RightOrder": [3, 6],
             "Cars": [{
                     "ImageId": 6,
