@@ -5,7 +5,7 @@ const VIRTUAL_WIDTH = 1050;
 
 var lastCrossroad;
 let animationInProgres;
-let soundInProgres;
+
 
 
 const mainCanvas = 'road';
@@ -15,10 +15,6 @@ const crossListClass = "list-group-item  list-group-item-action clearfix d-flex 
 const crossListBtn = "far fa-play-circle fa-lg hover";
 const badOrderText = "Nesprávne poradie. Skúste to ešte raz.";
 const succesMessage = "Výborne, podarilo sa Vám vyriešiť križovatku správne.";
-const bicycleSound = new Audio('assets/sounds/bicycle.wav');
-const carSound = new Audio('assets/sounds/car.mp3');
-const trolleySound = new Audio('assets/sounds/trolley.wav');
-
 
 
 
@@ -157,7 +153,7 @@ function createCrossRoad(cars, crossroad, containerId) {
 
                 carLayer.add(path);
 
-                var steps = 75; // number of steps in animation
+                var steps = 50; // number of steps in animation
                 var pathLen = path.getLength();
                 var step = pathLen / steps;
                 var pos = 0,
@@ -202,7 +198,6 @@ function createCrossRoad(cars, crossroad, containerId) {
                     if (pos == steps) {
                         animations[key].stop();
                         carGroup.destroy();
-                        resetSound();
                         animationInProgres = false;
                     }
 
@@ -320,11 +315,10 @@ function HandleMove(sender, rightOrderQueue, animations, stage) {
 
 
             animations[sender.attrs.id].start();
-            rundSound(sender.attrs.id);
             animationInProgres = true;
 
             if (response.done) {
-                showInfoModal(succesMessage, "Pokračovať na ďalšiu križovatku", `loadCrossroad(${getNextCrossroad()}, "${mainCanvas}")`);
+                showInfoModal(succesMessage, "Pokračovať na ďalšiu križovatku", `loadCrossroad(${lastCrossroad + 1 }, "${mainCanvas}")`);
             }
 
         } else {
@@ -486,41 +480,4 @@ function showTutorial() {
     });
 
 
-
-
-}
-
-function getNextCrossroad() {
-    if (lastCrossroad == 15) {
-        lastCrossroad = 0;
-    }
-    return lastCrossroad + 1;
-}
-
-function rundSound(id) {
-    if (id <= 6) {
-        carSound.play();
-        soundInProgres = "car";
-    } else if (id == 9) {
-        bicycleSound.play();
-        soundInProgres = "bicycle";
-    } else {
-        trolleySound.play();
-        soundInProgres = "trolleybus";
-    }
-
-}
-
-function resetSound() {
-    if (soundInProgres == "car") {
-        carSound.pause();
-        carSound.currentTime = 0;
-    } else if (soundInProgres == "bicycle") {
-        bicycleSound.pause();
-        bicycleSound.currentTime = 0;
-    } else if (soundInProgres == "trolleybus") {
-        trolleySound.pause();
-        trolleySound.currentTime = 0;
-    }
-    soundInProgres = "";
 }
