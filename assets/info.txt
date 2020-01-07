@@ -1,4 +1,4 @@
-Vitajte na našej stránke.
+Vitajte na našej stránke
 Pre riešenie križovatiek v sekcií "Križovatky" stačí klikať na objekty (autá,električky). Pri správnom alebo nesprávnom riešení
 Vás bude stránka sama upozorňovať. Pre prepnutie na ľubovoľnú križovatku použite ľavú lištu. Pri tomto zozname križovatiek taktiež nájdete ikonu, ktorá Vám pomôže so správnym riešením.
 Pre zistenie mena alebo v akom dátume má kto meniny stačí napísať do riadku v sekcií "Meniny" Vami chcené meno 
